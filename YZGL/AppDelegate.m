@@ -5,9 +5,12 @@
 //  Created by Admin on 17/2/27.
 //  Copyright © 2017年 Admin. All rights reserved.
 //
-
+#import "HomeViewController.h"
+#import "RecordViewController.h"
+#import "SettingViewController.h"
+#import "HintViewController.h"
 #import "AppDelegate.h"
-
+#import "UITabBarController+extension.h"
 @interface AppDelegate ()
 
 @end
@@ -16,7 +19,21 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.backgroundColor = [UIColor whiteColor];
+    
+    UITabBarController *tabBarVC=[[UITabBarController alloc]init];
+    UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 49)];
+    backView.backgroundColor = [UIColor blackColor];
+    [tabBarVC.tabBar insertSubview:backView atIndex:0];
+    tabBarVC.tabBar.opaque = YES;
+    [tabBarVC addViewController:[[HomeViewController alloc]init] withImage:@"1.png" WithSelectImage:@"1.png" WithTitle:@"首页"];
+    [tabBarVC addViewController:[[RecordViewController alloc]init] withImage:@"2.png" WithSelectImage:@"2.png" WithTitle:@"记录"];
+    [tabBarVC addViewController:[[HintViewController alloc]init] withImage:@"3.png" WithSelectImage:@"3.png" WithTitle:@"提示"];
+    [tabBarVC addViewController:[[SettingViewController alloc]init] withImage:@"4.png" WithSelectImage:@"4.png" WithTitle:@"设置"];
+    self.window.rootViewController=tabBarVC;
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
