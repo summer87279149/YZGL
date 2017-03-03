@@ -49,4 +49,5 @@
 #import "UIColor+JKHEX.h"
 #import "MBProgressHUD+MJ.h"
 #import "UIButton+XT_BtnCreate.h"
+#import "UserModel.h"
 #endif /* PrefixHeader_pch */

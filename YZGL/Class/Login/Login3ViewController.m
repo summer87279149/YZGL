@@ -122,7 +122,7 @@
         _tableview.delegate = self;
         _tableview.dataSource = self;
         _tableview.tableFooterView = [UIView new];
-        _tableview.separatorColor = [UIColor blackColor];
+//        _tableview.separatorColor = [UIColor blackColor];
 //        _tableview.scrollEnabled = NO;
         [self.view addSubview:_tableview];
     }

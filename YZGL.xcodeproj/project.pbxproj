@@ -13,6 +13,8 @@
 		840A7D521E67FF9300C86C61 /* BindPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 840A7D511E67FF9300C86C61 /* BindPhoneViewController.m */; };
 		840A7D551E68024000C86C61 /* HurryContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 840A7D541E68024000C86C61 /* HurryContactViewController.m */; };
 		840A7D581E68035A00C86C61 /* SafePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 840A7D571E68035A00C86C61 /* SafePasswordViewController.m */; };
+		840A7D5C1E68116900C86C61 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 840A7D5B1E68116900C86C61 /* UserModel.m */; };
+		840A7D611E681D0200C86C61 /* StaffManageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 840A7D5F1E681D0200C86C61 /* StaffManageViewController.m */; };
 		840DF1701E63B03A002A7E9C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 840DF16F1E63B03A002A7E9C /* main.m */; };
 		840DF1731E63B03A002A7E9C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 840DF1721E63B03A002A7E9C /* AppDelegate.m */; };
 		840DF1791E63B03A002A7E9C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 840DF1771E63B03A002A7E9C /* Main.storyboard */; };
@@ -251,7 +253,6 @@
 		840DF4A01E63BAA1002A7E9C /* RecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 840DF49E1E63BAA1002A7E9C /* RecordViewController.m */; };
 		840DF4A11E63BAA1002A7E9C /* RecordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840DF49F1E63BAA1002A7E9C /* RecordViewController.xib */; };
 		840DF4A51E63BAAC002A7E9C /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 840DF4A31E63BAAC002A7E9C /* SettingViewController.m */; };
-		840DF4A61E63BAAC002A7E9C /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840DF4A41E63BAAC002A7E9C /* SettingViewController.xib */; };
 		840DF4AA1E63BAB6002A7E9C /* HintViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 840DF4A81E63BAB6002A7E9C /* HintViewController.m */; };
 		840DF4AB1E63BAB6002A7E9C /* HintViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840DF4A91E63BAB6002A7E9C /* HintViewController.xib */; };
 		840DF4B01E63BE12002A7E9C /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 840DF4AC1E63BE12002A7E9C /* 1.png */; };
@@ -286,6 +287,19 @@
 		840F08991E65659500961F26 /* UserTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F08931E65659500961F26 /* UserTool.m */; };
 		840F089A1E65659500961F26 /* UIColor+extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F08941E65659500961F26 /* UIColor+extend.m */; };
 		840F08A01E656EC800961F26 /* UIViewController+CameraAndPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F089F1E656EC800961F26 /* UIViewController+CameraAndPhoto.m */; };
+		840F3E061E691C6200B79076 /* StaffManageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F3E041E691C6200B79076 /* StaffManageTableViewCell.m */; };
+		840F3E071E691C6200B79076 /* StaffManageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840F3E051E691C6200B79076 /* StaffManageTableViewCell.xib */; };
+		840F3E091E691F1200B79076 /* CompanManager.png in Resources */ = {isa = PBXBuildFile; fileRef = 840F3E081E691F1200B79076 /* CompanManager.png */; };
+		840F3E0B1E691FA300B79076 /* redPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = 840F3E0A1E691FA300B79076 /* redPhone.png */; };
+		840F3E0D1E69363800B79076 /* dfhead.png in Resources */ = {isa = PBXBuildFile; fileRef = 840F3E0C1E69363800B79076 /* dfhead.png */; };
+		840F3E101E6937B300B79076 /* AddStaffViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F3E0F1E6937B300B79076 /* AddStaffViewController.m */; };
+		840F3E131E6946C400B79076 /* SerachResultTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F3E121E6946C400B79076 /* SerachResultTableViewController.m */; };
+		840F3E181E69487F00B79076 /* SealManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F3E161E69487F00B79076 /* SealManagerViewController.m */; };
+		840F3E191E69487F00B79076 /* SealManagerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840F3E171E69487F00B79076 /* SealManagerViewController.xib */; };
+		840F3E1C1E694F2700B79076 /* placeholder_appstore.png in Resources */ = {isa = PBXBuildFile; fileRef = 840F3E1A1E694F2700B79076 /* placeholder_appstore.png */; };
+		840F3E1D1E694F2700B79076 /* placeholder_appstore@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 840F3E1B1E694F2700B79076 /* placeholder_appstore@2x.png */; };
+		840F3E261E69503400B79076 /* SealManagerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F3E241E69503400B79076 /* SealManagerCell.m */; };
+		840F3E271E69503400B79076 /* SealManagerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840F3E251E69503400B79076 /* SealManagerCell.xib */; };
 		841A19311E666FCD00D3540B /* PersonalDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 841A192F1E666FCD00D3540B /* PersonalDataViewController.m */; };
 		841A19341E667B5100D3540B /* RealNameAauthentication.png in Resources */ = {isa = PBXBuildFile; fileRef = 841A19331E667B5100D3540B /* RealNameAauthentication.png */; };
 		841A193C1E667D3000D3540B /* CertificateManageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 841A193B1E667D3000D3540B /* CertificateManageViewController.m */; };
@@ -296,7 +310,6 @@
 		841A194D1E66AD7B00D3540B /* TrueAndFalseQueryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 841A194B1E66AD7B00D3540B /* TrueAndFalseQueryViewController.xib */; };
 		841A19531E66B07500D3540B /* UIButton+XT_BtnCreate.m in Sources */ = {isa = PBXBuildFile; fileRef = 841A19521E66B07500D3540B /* UIButton+XT_BtnCreate.m */; };
 		841A195B1E66C65300D3540B /* QianZiCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 841A19591E66C65300D3540B /* QianZiCodeViewController.m */; };
-		841A195C1E66C65300D3540B /* QianZiCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 841A195A1E66C65300D3540B /* QianZiCodeViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -313,6 +326,10 @@
 		840A7D541E68024000C86C61 /* HurryContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HurryContactViewController.m; sourceTree = "<group>"; };
 		840A7D561E68035A00C86C61 /* SafePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SafePasswordViewController.h; sourceTree = "<group>"; };
 		840A7D571E68035A00C86C61 /* SafePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SafePasswordViewController.m; sourceTree = "<group>"; };
+		840A7D5A1E68116900C86C61 /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
+		840A7D5B1E68116900C86C61 /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
+		840A7D5E1E681D0200C86C61 /* StaffManageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaffManageViewController.h; sourceTree = "<group>"; };
+		840A7D5F1E681D0200C86C61 /* StaffManageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaffManageViewController.m; sourceTree = "<group>"; };
 		840DF16B1E63B03A002A7E9C /* YZGL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YZGL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		840DF16F1E63B03A002A7E9C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		840DF1711E63B03A002A7E9C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -793,7 +810,6 @@
 		840DF49F1E63BAA1002A7E9C /* RecordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecordViewController.xib; sourceTree = "<group>"; };
 		840DF4A21E63BAAC002A7E9C /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		840DF4A31E63BAAC002A7E9C /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
-		840DF4A41E63BAAC002A7E9C /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
 		840DF4A71E63BAB6002A7E9C /* HintViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HintViewController.h; sourceTree = "<group>"; };
 		840DF4A81E63BAB6002A7E9C /* HintViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HintViewController.m; sourceTree = "<group>"; };
 		840DF4A91E63BAB6002A7E9C /* HintViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HintViewController.xib; sourceTree = "<group>"; };
@@ -841,6 +857,24 @@
 		840F08971E65659500961F26 /* UIColor+extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+extend.h"; sourceTree = "<group>"; };
 		840F089E1E656EC800961F26 /* UIViewController+CameraAndPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+CameraAndPhoto.h"; sourceTree = "<group>"; };
 		840F089F1E656EC800961F26 /* UIViewController+CameraAndPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+CameraAndPhoto.m"; sourceTree = "<group>"; };
+		840F3E031E691C6200B79076 /* StaffManageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaffManageTableViewCell.h; sourceTree = "<group>"; };
+		840F3E041E691C6200B79076 /* StaffManageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaffManageTableViewCell.m; sourceTree = "<group>"; };
+		840F3E051E691C6200B79076 /* StaffManageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StaffManageTableViewCell.xib; sourceTree = "<group>"; };
+		840F3E081E691F1200B79076 /* CompanManager.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CompanManager.png; path = ../CompanManager.png; sourceTree = "<group>"; };
+		840F3E0A1E691FA300B79076 /* redPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redPhone.png; sourceTree = "<group>"; };
+		840F3E0C1E69363800B79076 /* dfhead.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dfhead.png; sourceTree = "<group>"; };
+		840F3E0E1E6937B300B79076 /* AddStaffViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddStaffViewController.h; sourceTree = "<group>"; };
+		840F3E0F1E6937B300B79076 /* AddStaffViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddStaffViewController.m; sourceTree = "<group>"; };
+		840F3E111E6946C400B79076 /* SerachResultTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SerachResultTableViewController.h; sourceTree = "<group>"; };
+		840F3E121E6946C400B79076 /* SerachResultTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SerachResultTableViewController.m; sourceTree = "<group>"; };
+		840F3E151E69487F00B79076 /* SealManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SealManagerViewController.h; sourceTree = "<group>"; };
+		840F3E161E69487F00B79076 /* SealManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SealManagerViewController.m; sourceTree = "<group>"; };
+		840F3E171E69487F00B79076 /* SealManagerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SealManagerViewController.xib; sourceTree = "<group>"; };
+		840F3E1A1E694F2700B79076 /* placeholder_appstore.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder_appstore.png; sourceTree = "<group>"; };
+		840F3E1B1E694F2700B79076 /* placeholder_appstore@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "placeholder_appstore@2x.png"; sourceTree = "<group>"; };
+		840F3E231E69503400B79076 /* SealManagerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SealManagerCell.h; sourceTree = "<group>"; };
+		840F3E241E69503400B79076 /* SealManagerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SealManagerCell.m; sourceTree = "<group>"; };
+		840F3E251E69503400B79076 /* SealManagerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SealManagerCell.xib; sourceTree = "<group>"; };
 		841A192E1E666FCD00D3540B /* PersonalDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalDataViewController.h; sourceTree = "<group>"; };
 		841A192F1E666FCD00D3540B /* PersonalDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalDataViewController.m; sourceTree = "<group>"; };
 		841A19331E667B5100D3540B /* RealNameAauthentication.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RealNameAauthentication.png; sourceTree = "<group>"; };
@@ -858,7 +892,6 @@
 		841A19521E66B07500D3540B /* UIButton+XT_BtnCreate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+XT_BtnCreate.m"; sourceTree = "<group>"; };
 		841A19581E66C65300D3540B /* QianZiCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QianZiCodeViewController.h; sourceTree = "<group>"; };
 		841A19591E66C65300D3540B /* QianZiCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QianZiCodeViewController.m; sourceTree = "<group>"; };
-		841A195A1E66C65300D3540B /* QianZiCodeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QianZiCodeViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -881,6 +914,25 @@
 				1BDFDEA19671717FA97DA27B /* Pods_YZGL.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		840A7D591E68114300C86C61 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				840A7D5A1E68116900C86C61 /* UserModel.h */,
+				840A7D5B1E68116900C86C61 /* UserModel.m */,
+			);
+			name = User;
+			sourceTree = "<group>";
+		};
+		840A7D5D1E681A0300C86C61 /* 人员管理 */ = {
+			isa = PBXGroup;
+			children = (
+				840F3E021E691C3C00B79076 /* M */,
+				840F3E011E691C3900B79076 /* V */,
+				840F3E001E691C3500B79076 /* C */,
+			);
+			name = "人员管理";
 			sourceTree = "<group>";
 		};
 		840DF1621E63B03A002A7E9C = {
@@ -940,6 +992,7 @@
 		840DF1861E63B10B002A7E9C /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				840A7D591E68114300C86C61 /* User */,
 				841A19351E667B8A00D3540B /* RealNameAauthentication */,
 				840DF4D41E6410FB002A7E9C /* Login */,
 				840DF4901E63BA5E002A7E9C /* Home */,
@@ -2032,7 +2085,12 @@
 		840DF4811E63B618002A7E9C /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				840F3E1A1E694F2700B79076 /* placeholder_appstore.png */,
+				840F3E1B1E694F2700B79076 /* placeholder_appstore@2x.png */,
+				840F3E0C1E69363800B79076 /* dfhead.png */,
+				840F3E0A1E691FA300B79076 /* redPhone.png */,
 				841A19331E667B5100D3540B /* RealNameAauthentication.png */,
+				840F3E081E691F1200B79076 /* CompanManager.png */,
 				840F088A1E65560700961F26 /* addPic.png */,
 				840DF4DC1E6415A0002A7E9C /* loginBG.png */,
 				840DF4C51E640E1B002A7E9C /* HomeTableViewCellImages */,
@@ -2077,6 +2135,7 @@
 		840DF4901E63BA5E002A7E9C /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				840F3E141E69482C00B79076 /* SealManager */,
 				841A19481E66AD5600D3540B /* TrueAndFalseQuery */,
 				841A19361E667CFA00D3540B /* CertificateManage */,
 				841A192D1E666FA900D3540B /* M */,
@@ -2099,12 +2158,12 @@
 		840DF4921E63BA5E002A7E9C /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				840A7D5D1E681A0300C86C61 /* 人员管理 */,
 				841A19571E66C4F000D3540B /* 签字码设置 */,
 				841A19561E66C4EF00D3540B /* 安全设置 */,
 				841A19541E66C4EA00D3540B /* 意见反馈 */,
 				840DF4A21E63BAAC002A7E9C /* SettingViewController.h */,
 				840DF4A31E63BAAC002A7E9C /* SettingViewController.m */,
-				840DF4A41E63BAAC002A7E9C /* SettingViewController.xib */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -2165,6 +2224,73 @@
 				840F08851E65417B00961F26 /* MBProgressHUD.bundle */,
 			);
 			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		840F3E001E691C3500B79076 /* C */ = {
+			isa = PBXGroup;
+			children = (
+				840F3E111E6946C400B79076 /* SerachResultTableViewController.h */,
+				840F3E121E6946C400B79076 /* SerachResultTableViewController.m */,
+				840A7D5E1E681D0200C86C61 /* StaffManageViewController.h */,
+				840A7D5F1E681D0200C86C61 /* StaffManageViewController.m */,
+				840F3E0E1E6937B300B79076 /* AddStaffViewController.h */,
+				840F3E0F1E6937B300B79076 /* AddStaffViewController.m */,
+			);
+			name = C;
+			sourceTree = "<group>";
+		};
+		840F3E011E691C3900B79076 /* V */ = {
+			isa = PBXGroup;
+			children = (
+				840F3E031E691C6200B79076 /* StaffManageTableViewCell.h */,
+				840F3E041E691C6200B79076 /* StaffManageTableViewCell.m */,
+				840F3E051E691C6200B79076 /* StaffManageTableViewCell.xib */,
+			);
+			name = V;
+			sourceTree = "<group>";
+		};
+		840F3E021E691C3C00B79076 /* M */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = M;
+			sourceTree = "<group>";
+		};
+		840F3E141E69482C00B79076 /* SealManager */ = {
+			isa = PBXGroup;
+			children = (
+				840F3E221E69500C00B79076 /* C */,
+				840F3E211E69500200B79076 /* V */,
+				840F3E201E694FFF00B79076 /* M */,
+			);
+			name = SealManager;
+			sourceTree = "<group>";
+		};
+		840F3E201E694FFF00B79076 /* M */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = M;
+			sourceTree = "<group>";
+		};
+		840F3E211E69500200B79076 /* V */ = {
+			isa = PBXGroup;
+			children = (
+				840F3E231E69503400B79076 /* SealManagerCell.h */,
+				840F3E241E69503400B79076 /* SealManagerCell.m */,
+				840F3E251E69503400B79076 /* SealManagerCell.xib */,
+			);
+			name = V;
+			sourceTree = "<group>";
+		};
+		840F3E221E69500C00B79076 /* C */ = {
+			isa = PBXGroup;
+			children = (
+				840F3E151E69487F00B79076 /* SealManagerViewController.h */,
+				840F3E161E69487F00B79076 /* SealManagerViewController.m */,
+				840F3E171E69487F00B79076 /* SealManagerViewController.xib */,
+			);
+			name = C;
 			sourceTree = "<group>";
 		};
 		841A192C1E666FA300D3540B /* C */ = {
@@ -2273,7 +2399,6 @@
 			children = (
 				841A19581E66C65300D3540B /* QianZiCodeViewController.h */,
 				841A19591E66C65300D3540B /* QianZiCodeViewController.m */,
-				841A195A1E66C65300D3540B /* QianZiCodeViewController.xib */,
 			);
 			name = "签字码设置";
 			sourceTree = "<group>";
@@ -2356,30 +2481,36 @@
 				840DF4B31E63BE12002A7E9C /* 4.png in Resources */,
 				840DF4B21E63BE12002A7E9C /* 3.png in Resources */,
 				840DF4C01E63EEA3002A7E9C /* TopImage.jpg in Resources */,
+				840F3E0B1E691FA300B79076 /* redPhone.png in Resources */,
 				840F08871E65417B00961F26 /* MBProgressHUD.bundle in Resources */,
 				840DF46B1E63B1B3002A7E9C /* MJRefresh.bundle in Resources */,
 				840DF4DD1E6415A0002A7E9C /* loginBG.png in Resources */,
 				840F087E1E65248100961F26 /* city.plist in Resources */,
 				840DF4C21E63FBE0002A7E9C /* CompanyManager.png in Resources */,
+				840F3E071E691C6200B79076 /* StaffManageTableViewCell.xib in Resources */,
 				840DF4831E63B623002A7E9C /* lauchImg.jpg in Resources */,
+				840F3E1D1E694F2700B79076 /* placeholder_appstore@2x.png in Resources */,
+				840F3E271E69503400B79076 /* SealManagerCell.xib in Resources */,
 				840DF4BE1E63DB28002A7E9C /* QRCode.png in Resources */,
 				840DF4D01E640E4D002A7E9C /* 11.png in Resources */,
 				841A194D1E66AD7B00D3540B /* TrueAndFalseQueryViewController.xib in Resources */,
+				840F3E091E691F1200B79076 /* CompanManager.png in Resources */,
 				840DF4C41E63FCD5002A7E9C /* rightAuthenticationImg.png in Resources */,
 				841A19411E669BD900D3540B /* CertificateManageTableViewCell.xib in Resources */,
 				840DF4AB1E63BAB6002A7E9C /* HintViewController.xib in Resources */,
-				841A195C1E66C65300D3540B /* QianZiCodeViewController.xib in Resources */,
 				840DF4D91E641111002A7E9C /* LoginViewController.xib in Resources */,
+				840F3E1C1E694F2700B79076 /* placeholder_appstore.png in Resources */,
 				840DF4CD1E640E47002A7E9C /* 66.png in Resources */,
 				840DF4A11E63BAA1002A7E9C /* RecordViewController.xib in Resources */,
+				840F3E191E69487F00B79076 /* SealManagerViewController.xib in Resources */,
 				840DF4E71E64182C002A7E9C /* RegistViewController.xib in Resources */,
 				840DF1791E63B03A002A7E9C /* Main.storyboard in Resources */,
 				840DF4D11E640E4D002A7E9C /* 22.png in Resources */,
 				840DF4CC1E640E47002A7E9C /* 55.png in Resources */,
 				840DF4CB1E640E47002A7E9C /* 44.png in Resources */,
 				841A19341E667B5100D3540B /* RealNameAauthentication.png in Resources */,
+				840F3E0D1E69363800B79076 /* dfhead.png in Resources */,
 				840F088B1E65560700961F26 /* addPic.png in Resources */,
-				840DF4A61E63BAAC002A7E9C /* SettingViewController.xib in Resources */,
 				840DF4B01E63BE12002A7E9C /* 1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2506,6 +2637,7 @@
 				840DF3D01E63B1AD002A7E9C /* NSURLSession+JKSynchronousTask.m in Sources */,
 				840DF4051E63B1AD002A7E9C /* UIImage+JKOrientation.m in Sources */,
 				840DF3BF1E63B1AD002A7E9C /* NSString+JKNormalRegex.m in Sources */,
+				840A7D5C1E68116900C86C61 /* UserModel.m in Sources */,
 				840DF4311E63B1AD002A7E9C /* UIView+JKConstraints.m in Sources */,
 				840DF43D1E63B1AD002A7E9C /* UIViewController+JKBackButtonTouched.m in Sources */,
 				840DF3CA1E63B1AD002A7E9C /* NSTimer+JKBlocks.m in Sources */,
@@ -2526,6 +2658,7 @@
 				840DF3F91E63B1AD002A7E9C /* UIFont+JKDynamicFontControl.m in Sources */,
 				840DF4451E63B1AD002A7E9C /* UIWebView+JKLoad.m in Sources */,
 				840DF3F01E63B1AD002A7E9C /* UIColor+JKGradient.m in Sources */,
+				840F3E261E69503400B79076 /* SealManagerCell.m in Sources */,
 				840DF4041E63B1AD002A7E9C /* UIImage+JKMerge.m in Sources */,
 				840DF3B51E63B1AD002A7E9C /* NSSet+JKBlock.m in Sources */,
 				840F08811E652AE800961F26 /* OrderAddressViewController.m in Sources */,
@@ -2539,9 +2672,11 @@
 				840DF3E01E63B1AD002A7E9C /* UIBarButtonItem+JKAction.m in Sources */,
 				840DF3941E63B1AD002A7E9C /* NSDate+JKZeroDate.m in Sources */,
 				840DF3DA1E63B1AD002A7E9C /* CATransaction+JKAnimateWithDuration.m in Sources */,
+				840F3E131E6946C400B79076 /* SerachResultTableViewController.m in Sources */,
 				840DF3A91E63B1AD002A7E9C /* NSObject+JKAddProperty.m in Sources */,
 				840DF4321E63B1AD002A7E9C /* UIView+JKCustomBorder.m in Sources */,
 				840DF43A1E63B1AD002A7E9C /* UIView+JKToast.m in Sources */,
+				840A7D611E681D0200C86C61 /* StaffManageViewController.m in Sources */,
 				840DF3ED1E63B1AD002A7E9C /* UIButton+JKMiddleAligning.m in Sources */,
 				840DF42F1E63B1AD002A7E9C /* UIView+JKAnimation.m in Sources */,
 				840DF3DC1E63B1AD002A7E9C /* UIApplication+JKApplicationSize.m in Sources */,
@@ -2590,6 +2725,7 @@
 				840DF4D81E641111002A7E9C /* LoginViewController.m in Sources */,
 				840DF3F61E63B1AD002A7E9C /* UIControl+JKBlock.m in Sources */,
 				840DF4461E63B1AD002A7E9C /* UIWebView+JKLoadInfo.m in Sources */,
+				840F3E061E691C6200B79076 /* StaffManageTableViewCell.m in Sources */,
 				840DF3F41E63B1AD002A7E9C /* UIColor+JKWeb.m in Sources */,
 				840DF3811E63B1AD002A7E9C /* NSManagedObjectContext+JKObjectClear.m in Sources */,
 				840DF42E1E63B1AD002A7E9C /* UITextView+JKSelect.m in Sources */,
@@ -2598,6 +2734,7 @@
 				840DF3B01E63B1AD002A7E9C /* NSObject+JKGCD.m in Sources */,
 				840DF4371E63B1AD002A7E9C /* UIView+JKRecursion.m in Sources */,
 				840DF4291E63B1AD002A7E9C /* UITextField+JKSelect.m in Sources */,
+				840F3E181E69487F00B79076 /* SealManagerViewController.m in Sources */,
 				840DF43C1E63B1AD002A7E9C /* UIViewController+JKBackButtonItemTitle.m in Sources */,
 				840DF3A51E63B1AD002A7E9C /* NSDecimalNumber+JKExtensions.m in Sources */,
 				840DF4271E63B1AD002A7E9C /* UITextField+JKHistory.m in Sources */,
@@ -2655,6 +2792,7 @@
 				840DF4701E63B1B3002A7E9C /* UIScrollView+MJExtension.m in Sources */,
 				840F08861E65417B00961F26 /* MBProgressHUD+MJ.m in Sources */,
 				840F089A1E65659500961F26 /* UIColor+extend.m in Sources */,
+				840F3E101E6937B300B79076 /* AddStaffViewController.m in Sources */,
 				840DF3E71E63B1AD002A7E9C /* UIButton+JKBackgroundColor.m in Sources */,
 				840DF3B31E63B1AD002A7E9C /* NSObject+JKRuntime.m in Sources */,
 				840DF3CD1E63B1AD002A7E9C /* NSURLConnection+JKSelfSigned.m in Sources */,

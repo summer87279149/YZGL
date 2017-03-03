@@ -158,7 +158,7 @@
         _tableview.delegate = self;
         _tableview.dataSource = self;
         _tableview.tableFooterView = [UIView new];
-        _tableview.separatorColor = [UIColor blackColor];
+//        _tableview.separatorColor = [UIColor blackColor];
         [_tableview registerNib:[UINib nibWithNibName:@"CertificateManageTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"certiCell"];
         [self.view addSubview:_tableview];
     }

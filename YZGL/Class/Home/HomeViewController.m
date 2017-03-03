@@ -5,6 +5,7 @@
 //  Created by Admin on 17/2/27.
 //  Copyright © 2017年 Admin. All rights reserved.
 //
+#import "SealManagerViewController.h"
 #import "TrueAndFalseQueryViewController.h"
 #import "CertificateManageViewController.h"
 #import "PersonalDataViewController.h"
@@ -28,6 +29,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     switch (indexPath.row) {
         case 0:{ [self xt_pushWithViewControllerClass:[CertificateManageViewController class]]; } break;
+        case 1:{ [self xt_pushWithViewControllerClass:[SealManagerViewController class]]; } break;
         case 3:{ [self xt_pushWithViewControllerClass:[TrueAndFalseQueryViewController class]]; }break;
         default:{
             LoginViewController *vc = [[LoginViewController alloc]init];
@@ -44,7 +46,10 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.cellArr.count;
 }
-
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    [self.view endEditing:YES];
+    [self.view resignFirstResponder];
+}
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *tableCell = @"CellIdentifier";
     UITableViewCell *cell = (UITableViewCell* )[tableView dequeueReusableCellWithIdentifier:tableCell];
@@ -74,12 +79,12 @@
     self.navigationController.delegate = self;
     SearchView *searchView = [[SearchView alloc]initWithFrame:CGRectMake(0, 20, kScreenWidth, 44)];
     [self.view addSubview:searchView];
-    [searchView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(44);
-        make.top.mas_equalTo(self.view).offset(20);
-        make.width.mas_equalTo(self.view);
-        make.left.mas_equalTo(self.view);
-    }];
+//    [searchView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.height.mas_equalTo(44);
+//        make.top.mas_equalTo(self.view).offset(20);
+//        make.width.mas_equalTo(self.view);
+//        make.left.mas_equalTo(self.view);
+//    }];
     MyLinearLayout *rootLayout = [MyLinearLayout linearLayoutWithOrientation:MyLayoutViewOrientation_Vert];
     rootLayout.widthDime.equalTo(self.view.widthDime);
     rootLayout.myTopMargin = 64;

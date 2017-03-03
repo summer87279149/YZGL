@@ -13,10 +13,13 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        self.alpha=0.5;
+        self.backgroundColor = RGBA(37, 37, 37, 1);
         MyLinearLayout *layout = [MyLinearLayout linearLayoutWithOrientation:MyLayoutViewOrientation_Horz];
         layout.frame = CGRectMake(0, 0, kScreenWidth, frame.size.height);
         layout.gravity = MyMarginGravity_Vert_Center;
-        layout.backgroundColor =RGBA(37, 37, 37, 0.5);
+        layout.backgroundColor =RGBA(37, 37, 37, 1);
+//        layout.alpha = 0.5;
         [self addSubview:layout];
         UISearchBar *searchBar = [[UISearchBar alloc]initWithFrame:frame];
         searchBar.myLeftMargin = 15;

@@ -69,7 +69,7 @@
         _tableview = [[UITableView alloc]initWithFrame:CGRectMake(0, 130, kScreenWidth, 100) style:UITableViewStylePlain];
         _tableview.delegate = self;
         _tableview.tableFooterView = [UIView new];
-        _tableview.separatorColor = [UIColor blackColor];
+//        _tableview.separatorColor = [UIColor blackColor];
         [self.view addSubview:_tableview];
     }
     return _tableview;

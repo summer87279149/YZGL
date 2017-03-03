@@ -1,33 +1,33 @@
 //
-//  BindPhoneViewController.m
+//  AddStaffViewController.m
 //  YZGL
 //
-//  Created by Admin on 17/3/2.
+//  Created by Admin on 17/3/3.
 //  Copyright © 2017年 Admin. All rights reserved.
 //
+#import "RETableViewOptionsController.h"
+#import "AddStaffViewController.h"
 
-#import "BindPhoneViewController.h"
-
-@interface BindPhoneViewController ()<UITableViewDelegate>
+@interface AddStaffViewController ()<UITableViewDelegate,RETableViewManagerDelegate>
 @property (nonatomic, strong) UITableView *tableview;
 @property (nonatomic, strong) RETableViewManager *manager;
-@property (nonatomic, strong) RENumberItem *originalPasswordCell;
-@property (nonatomic, strong) RENumberItem *PasswordCell1;
-@property (nonatomic, strong) RENumberItem *PasswordCell2;
+@property (nonatomic, strong) NSArray *arr;
+@property (nonatomic, strong) RETextItem *duty;
+@property (nonatomic, strong) RETextItem *vertifyCode;
+@property (nonatomic, strong) RETextItem *name;
+@property (nonatomic, strong) RENumberItem *phoneNumber;
+@property (strong, readwrite, nonatomic) RERadioItem *radioItem;
 @property (nonatomic, strong) UIButton *completeBtn;
 @property (nonatomic, strong) UIButton *vertifyBtn;
-@property (nonatomic, strong) UIButton *currentVertifyBtn;
 
 @end
 
-@implementation BindPhoneViewController
+@implementation AddStaffViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
-    self.title = @"更换绑定手机";
+    self.title = @"添加人员";
     [self setupview];
-
 }
 
 -(void)setupview{
@@ -35,51 +35,41 @@
     RETableViewSection *section = [RETableViewSection sectionWithHeaderTitle:@"Test"];
     section.headerHeight = 0;
     [self.manager addSection:section];
+    //职位
     
-    self.originalPasswordCell = [RENumberItem itemWithTitle:@"当前手机验证码" value:nil placeholder:@"手机验证码"];
+    self.radioItem = [RERadioItem itemWithTitle:@"职务类型" value:@"职员" selectionHandler:^(RERadioItem *item) {
+        [item deselectRowAnimated:YES];
+        WS(weakSelf)
+        RETableViewOptionsController *optionsController = [[RETableViewOptionsController alloc] initWithItem:item options:weakSelf.arr multipleChoice:NO completionHandler:^(RETableViewItem *selectedItem){
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+            [item reloadRowWithAnimation:UITableViewRowAnimationNone];
+        }];
+       [weakSelf.navigationController pushViewController:optionsController animated:YES];
+    }];
+    //验证码
+    self.vertifyCode = [RETextItem itemWithTitle:@"验证码" value:nil placeholder:@"输入验证码"];
     self.vertifyBtn = [self createBtnWithTag:10];
-    self.originalPasswordCell.accessoryView = self.vertifyBtn;
-    
-    
-    self.PasswordCell1 = [RENumberItem itemWithTitle:@"更换手机" value:nil
-                                       placeholder:@"手机号"];
-    
-    self.currentVertifyBtn = [self createBtnWithTag:20];
-    self.PasswordCell2 = [RENumberItem itemWithTitle:@"更换手机验证码" value:nil
-                                       placeholder:@"验证码"];
-    self.PasswordCell2.accessoryView = self.currentVertifyBtn;
-    
-    [section addItem:self.originalPasswordCell];
-    [section addItem:self.PasswordCell1];
-    [section addItem:self.PasswordCell2];
-    
+    self.vertifyCode.accessoryView = self.vertifyBtn;
+    //职务
+    self.duty = [RETextItem itemWithTitle:@"职务" value:nil placeholder:@"请输入姓名"];
+
+    //姓名
+    self.name = [RETextItem itemWithTitle:@"姓名" value:nil placeholder:@"请输入姓名"];
+    //确认密码
+    self.phoneNumber = [RENumberItem itemWithTitle:@"手机号" value:nil  placeholder:@"请输入手机号"];
+    [section addItem:self.duty];
+    [section addItem:self.radioItem];
+    [section addItem:self.name];
+    [section addItem:self.phoneNumber];
+    [section addItem:self.vertifyCode];
     [self.view addSubview:self.completeBtn];
     self.completeBtn.frame = CGRectMake(20, CGRectGetMaxY(self.tableview.frame), kScreenWidth-40, 40);
     self.completeBtn.layer.cornerRadius = 3;
 }
+-(void)pushVC{
+    [self xt_pushWithViewControllerClass:[UIViewController class]];
+}
 
--(void)completeClicked{
-    if([self validateButtonPressed]){
-        
-    }
-}
-- (BOOL)validateButtonPressed
-{
-    NSArray *managerErrors = self.manager.errors;
-    if (managerErrors.count > 0) {
-        NSMutableArray *errors = [NSMutableArray array];
-        for (NSError *error in managerErrors) {
-            [errors addObject:error.localizedDescription];
-        }
-        NSString *errorString = [errors componentsJoinedByString:@"\n"];
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"信息不全" message:errorString delegate:nil cancelButtonTitle:@"好的" otherButtonTitles:nil];
-        [alert show];
-        return NO;
-    } else {
-        NSLog(@"All good, no errors!");
-        return YES;
-    }
-}
 -(UIButton*)createBtnWithTag:(NSInteger)tag{
     UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 50, 30)];
     [btn setTitle:@"验证码" forState:UIControlStateNormal];
@@ -94,6 +84,7 @@
     btn.showsTouchWhenHighlighted = YES;
     return btn;
 }
+
 - (void)codeCountDown:(UIButton*)sender
 {
     __block int timeout=30; //倒计时时间
@@ -124,32 +115,30 @@
 }
 
 
+#pragma mark - lazy
 
-
-
-
-
+-(NSArray*)arr{
+    if(!_arr){
+        _arr = @[@"管理层/授权人", @"职员"];
+    }
+    return _arr;
+}
 
 -(UIButton*)completeBtn{
     if(!_completeBtn){
         _completeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _completeBtn.backgroundColor = [UIColor jk_colorWithHexString:@"#dd534c"];
-        [_completeBtn setTitle:@"确认修改" forState:UIControlStateNormal];
+        [_completeBtn setTitle:@"确认设置" forState:UIControlStateNormal];
         [_completeBtn addTarget:self action:@selector(completeClicked) forControlEvents:UIControlEventTouchUpInside];
     }
     return _completeBtn;
 }
-
-
-
-
 #pragma mark - tableview
 -(UITableView*)tableview{
     if(!_tableview){
         _tableview = [[UITableView alloc]initWithFrame:CGRectMake(0, 74, kScreenWidth, 180) style:UITableViewStylePlain];
         _tableview.delegate = self;
         _tableview.tableFooterView = [UIView new];
-//        _tableview.separatorColor = [UIColor blackColor];
         [self.view addSubview:_tableview];
     }
     return _tableview;
@@ -160,21 +149,6 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
