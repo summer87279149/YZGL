@@ -46,6 +46,11 @@
 		840523061E6D3AE80071D732 /* UIImage+CropRotate.m in Sources */ = {isa = PBXBuildFile; fileRef = 840522F61E6D3AE80071D732 /* UIImage+CropRotate.m */; };
 		840523071E6D3AE80071D732 /* UIImage+FixOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 840522F81E6D3AE80071D732 /* UIImage+FixOrientation.m */; };
 		8405230A1E6D46180071D732 /* FileDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 840523091E6D46180071D732 /* FileDetailViewController.m */; };
+		840523141E6D55590071D732 /* MatterListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 840523121E6D55590071D732 /* MatterListViewController.m */; };
+		8405231C1E6D55EB0071D732 /* DetailMatterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8405231A1E6D55EB0071D732 /* DetailMatterViewController.m */; };
+		840523201E6D56160071D732 /* MatterListItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8405231F1E6D56160071D732 /* MatterListItemViewController.m */; };
+		840523241E6D575C0071D732 /* MatterListItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 840523221E6D575C0071D732 /* MatterListItemCell.m */; };
+		840523251E6D575C0071D732 /* MatterListItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840523231E6D575C0071D732 /* MatterListItemCell.xib */; };
 		840A7D471E67F82900C86C61 /* SecuritySettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 840A7D451E67F82900C86C61 /* SecuritySettingViewController.m */; };
 		840A7D4F1E67FBD500C86C61 /* ModifyPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 840A7D4E1E67FBD500C86C61 /* ModifyPasswordViewController.m */; };
 		840A7D521E67FF9300C86C61 /* BindPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 840A7D511E67FF9300C86C61 /* BindPhoneViewController.m */; };
@@ -431,6 +436,15 @@
 		840522F81E6D3AE80071D732 /* UIImage+FixOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FixOrientation.m"; sourceTree = "<group>"; };
 		840523081E6D46180071D732 /* FileDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileDetailViewController.h; sourceTree = "<group>"; };
 		840523091E6D46180071D732 /* FileDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileDetailViewController.m; sourceTree = "<group>"; };
+		840523111E6D55590071D732 /* MatterListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatterListViewController.h; sourceTree = "<group>"; };
+		840523121E6D55590071D732 /* MatterListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatterListViewController.m; sourceTree = "<group>"; };
+		840523191E6D55EB0071D732 /* DetailMatterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailMatterViewController.h; sourceTree = "<group>"; };
+		8405231A1E6D55EB0071D732 /* DetailMatterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailMatterViewController.m; sourceTree = "<group>"; };
+		8405231E1E6D56160071D732 /* MatterListItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatterListItemViewController.h; sourceTree = "<group>"; };
+		8405231F1E6D56160071D732 /* MatterListItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatterListItemViewController.m; sourceTree = "<group>"; };
+		840523211E6D575C0071D732 /* MatterListItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatterListItemCell.h; sourceTree = "<group>"; };
+		840523221E6D575C0071D732 /* MatterListItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatterListItemCell.m; sourceTree = "<group>"; };
+		840523231E6D575C0071D732 /* MatterListItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MatterListItemCell.xib; sourceTree = "<group>"; };
 		840A7D441E67F82900C86C61 /* SecuritySettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecuritySettingViewController.h; sourceTree = "<group>"; };
 		840A7D451E67F82900C86C61 /* SecuritySettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecuritySettingViewController.m; sourceTree = "<group>"; };
 		840A7D4D1E67FBD500C86C61 /* ModifyPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModifyPasswordViewController.h; sourceTree = "<group>"; };
@@ -1155,6 +1169,46 @@
 				840522F81E6D3AE80071D732 /* UIImage+FixOrientation.m */,
 			);
 			path = SKFCamera;
+			sourceTree = "<group>";
+		};
+		8405230B1E6D522E0071D732 /* MatterList */ = {
+			isa = PBXGroup;
+			children = (
+				840523181E6D55BA0071D732 /* M */,
+				840523171E6D55B70071D732 /* V */,
+				840523161E6D55B40071D732 /* C */,
+			);
+			name = MatterList;
+			sourceTree = "<group>";
+		};
+		840523161E6D55B40071D732 /* C */ = {
+			isa = PBXGroup;
+			children = (
+				840523111E6D55590071D732 /* MatterListViewController.h */,
+				840523121E6D55590071D732 /* MatterListViewController.m */,
+				8405231E1E6D56160071D732 /* MatterListItemViewController.h */,
+				8405231F1E6D56160071D732 /* MatterListItemViewController.m */,
+				840523191E6D55EB0071D732 /* DetailMatterViewController.h */,
+				8405231A1E6D55EB0071D732 /* DetailMatterViewController.m */,
+			);
+			name = C;
+			sourceTree = "<group>";
+		};
+		840523171E6D55B70071D732 /* V */ = {
+			isa = PBXGroup;
+			children = (
+				840523211E6D575C0071D732 /* MatterListItemCell.h */,
+				840523221E6D575C0071D732 /* MatterListItemCell.m */,
+				840523231E6D575C0071D732 /* MatterListItemCell.xib */,
+			);
+			name = V;
+			sourceTree = "<group>";
+		};
+		840523181E6D55BA0071D732 /* M */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = M;
 			sourceTree = "<group>";
 		};
 		840A7D591E68114300C86C61 /* User */ = {
@@ -2383,6 +2437,7 @@
 				840F3E141E69482C00B79076 /* SealManager */,
 				841A19481E66AD5600D3540B /* TrueAndFalseQuery */,
 				8405223B1E6D06FC0071D732 /* ElectronicalSealManager */,
+				8405230B1E6D522E0071D732 /* MatterList */,
 				841A192D1E666FA900D3540B /* M */,
 				841A192C1E666FA300D3540B /* C */,
 				840DF4B51E63CC33002A7E9C /* V */,
@@ -2793,6 +2848,7 @@
 				840DF4A11E63BAA1002A7E9C /* RecordViewController.xib in Resources */,
 				840DF4E71E64182C002A7E9C /* RegistViewController.xib in Resources */,
 				840DF1791E63B03A002A7E9C /* Main.storyboard in Resources */,
+				840523251E6D575C0071D732 /* MatterListItemCell.xib in Resources */,
 				840DF4D11E640E4D002A7E9C /* 22.png in Resources */,
 				840DF4CC1E640E47002A7E9C /* 55.png in Resources */,
 				840DF4CB1E640E47002A7E9C /* 44.png in Resources */,
@@ -2937,6 +2993,7 @@
 				840DF3A31E63B1AD002A7E9C /* NSNotificationCenter+JKMainThread.m in Sources */,
 				840DF3CC1E63B1AD002A7E9C /* NSURL+JKQueryDictionary.m in Sources */,
 				840523021E6D3AE80071D732 /* TOCropView.m in Sources */,
+				840523201E6D56160071D732 /* MatterListItemViewController.m in Sources */,
 				840DF3C11E63B1AD002A7E9C /* NSString+JKRemoveEmoji.m in Sources */,
 				840DF3D01E63B1AD002A7E9C /* NSURLSession+JKSynchronousTask.m in Sources */,
 				840DF4051E63B1AD002A7E9C /* UIImage+JKOrientation.m in Sources */,
@@ -3025,6 +3082,7 @@
 				840DF1731E63B03A002A7E9C /* AppDelegate.m in Sources */,
 				840DF4431E63B1AD002A7E9C /* UIWebView+JKCanvas.m in Sources */,
 				840A7D521E67FF9300C86C61 /* BindPhoneViewController.m in Sources */,
+				840523241E6D575C0071D732 /* MatterListItemCell.m in Sources */,
 				840DF4241E63B1AD002A7E9C /* UITableViewCell+JKDelaysContentTouches.m in Sources */,
 				840DF3A11E63B1AD002A7E9C /* NSInvocation+JKBb.m in Sources */,
 				840DF3B81E63B1AD002A7E9C /* NSString+JKDictionaryValue.m in Sources */,
@@ -3045,6 +3103,7 @@
 				840DF3F41E63B1AD002A7E9C /* UIColor+JKWeb.m in Sources */,
 				840DF3811E63B1AD002A7E9C /* NSManagedObjectContext+JKObjectClear.m in Sources */,
 				840DF42E1E63B1AD002A7E9C /* UITextView+JKSelect.m in Sources */,
+				8405231C1E6D55EB0071D732 /* DetailMatterViewController.m in Sources */,
 				840DF3A01E63B1AD002A7E9C /* NSIndexPath+JKOffset.m in Sources */,
 				840522FD1E6D3AE80071D732 /* TOActivityCroppedImageProvider.m in Sources */,
 				840DF3951E63B1AD002A7E9C /* NSDateFormatter+JKMake.m in Sources */,
@@ -3064,6 +3123,7 @@
 				840DF4771E63B1B3002A7E9C /* UIView+REFrostedViewController.m in Sources */,
 				840DF3E41E63B1AD002A7E9C /* UIBezierPath+JKSVGString.m in Sources */,
 				840DF3861E63B1AD002A7E9C /* NSData+JKAPNSToken.m in Sources */,
+				840523141E6D55590071D732 /* MatterListViewController.m in Sources */,
 				840DF3921E63B1AD002A7E9C /* NSDate+JKReporting.m in Sources */,
 				840DF4071E63B1AD002A7E9C /* UIImage+JKResize.m in Sources */,
 				840DF38E1E63B1AD002A7E9C /* NSDate+JKCupertinoYankee.m in Sources */,

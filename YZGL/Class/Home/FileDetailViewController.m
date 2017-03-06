@@ -8,10 +8,11 @@
 #import "DXPopover.h"
 #import "FileDetailViewController.h"
 
-@interface FileDetailViewController ()
-
+@interface FileDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
+@property(nonatomic, strong) DXPopover *popover;
+@property(nonatomic, strong) UITableView *popoverTableView;
 @property(nonatomic, strong) MyLinearLayout *contentLayout;
-
+@property(nonatomic, strong) NSArray *cellArr;
 @end
 
 @implementation FileDetailViewController
@@ -34,11 +35,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"文件详情";
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"审核情况" style:UIBarButtonItemStylePlain target:self action:@selector(checkState)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"审核情况" style:UIBarButtonItemStylePlain target:self action:@selector(checkState:)];
     [self createSection];
+    [self createrPopoverView];
+    self.popover = [DXPopover popover];
 }
--(void)checkState{
+-(void)createrPopoverView{
     
+    
+}
+-(void)checkState:(UIBarButtonItem*)item{
+    CGPoint point =  CGPointMake(kScreenWidth-30, 70);
+    [_popover showAtPoint:point popoverPostion:DXPopoverPositionDown withContentView:self.popoverTableView inView:self.view];
+//    [_popover showAtView:item popoverPostion:DXPopoverPositionDown withContentView:self.popoverTableView inView:self.view];
 }
 -(void)addPhotos{
     UIImageView *imageView = [[UIImageView alloc]initWithImage:nil];
@@ -95,7 +104,46 @@
     
     
 }
+-(NSArray*)cellArr{
+    if(!_cellArr){
+        _cellArr = @[@{@"title":@"审核进度",@"value":@""},@{@"title":@"管理员-哈哈",@"value":@"未处理"}];
+    }
+    return _cellArr;
+}
+-(UITableView*)popoverTableView{
+    if(!_popoverTableView){
+        _popoverTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 180*k_scale, 100) style:UITableViewStylePlain];
+        _popoverTableView.delegate = self;
+        _popoverTableView.dataSource = self;
+        _popoverTableView.tableFooterView = [UIView new];
+    }
+    return _popoverTableView;
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+}
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 50;
+}
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 2;
+}
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *tableCell = @"CellIdentifier";
+    UITableViewCell *cell = (UITableViewCell *)[tableView dequeueReusableCellWithIdentifier:tableCell];
+    if (cell == nil)
+    {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1
+                                          reuseIdentifier:tableCell];
+    }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    NSDictionary *dic = self.cellArr[indexPath.row];
+    cell.textLabel.text = dic[@"title"];
+    cell.detailTextLabel.text = dic[@"value"];
+    
+    return cell;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

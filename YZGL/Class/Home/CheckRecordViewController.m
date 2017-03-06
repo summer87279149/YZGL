@@ -16,6 +16,8 @@
 
 - (void)viewDidLoad {
     self.title=@"审核记录";
+//    self.menuView.myTopMargin = 200;
+    self.viewFrame = CGRectMake(0, 100, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 100);
     self.menuHeight = 44; //导航栏高度
     self.menuItemWidth = 70; //每个 MenuItem 的宽度
     self.menuBGColor = [UIColor whiteColor];

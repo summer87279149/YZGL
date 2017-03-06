@@ -5,6 +5,7 @@
 //  Created by Admin on 17/3/6.
 //  Copyright © 2017年 Admin. All rights reserved.
 //
+#import "FileDetailViewController.h"
 #import "ElectronicalRealViewCell.h"
 #import "CheckViewController.h"
 
@@ -63,7 +64,7 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    [self xt_pushWithViewControllerClass:[FileDetailViewController class]];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
