@@ -5,6 +5,7 @@
 //  Created by Admin on 17/2/27.
 //  Copyright © 2017年 Admin. All rights reserved.
 //
+#import "ElectronicalRealViewController.h"
 #import "SealManagerViewController.h"
 #import "TrueAndFalseQueryViewController.h"
 #import "CertificateManageViewController.h"
@@ -31,6 +32,7 @@
         case 0:{ [self xt_pushWithViewControllerClass:[CertificateManageViewController class]]; } break;
         case 1:{ [self xt_pushWithViewControllerClass:[SealManagerViewController class]]; } break;
         case 3:{ [self xt_pushWithViewControllerClass:[TrueAndFalseQueryViewController class]]; }break;
+        case 4:{ [self xt_pushWithViewControllerClass:[ElectronicalRealViewController class]]; }break;
         default:{
             LoginViewController *vc = [[LoginViewController alloc]init];
             [self.navigationController pushViewController:vc animated:YES];

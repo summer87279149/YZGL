@@ -13,8 +13,11 @@
 @interface CertificateManageViewController ()<UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate>
 
 @property (nonatomic, strong) UISegmentedControl *topSwitch;
+
 @property (nonatomic, strong) UISearchBar *searchBar;
+
 @property (nonatomic, strong) UITableView *tableview;
+
 @end
 
 @implementation CertificateManageViewController
@@ -158,7 +161,6 @@
         _tableview.delegate = self;
         _tableview.dataSource = self;
         _tableview.tableFooterView = [UIView new];
-//        _tableview.separatorColor = [UIColor blackColor];
         [_tableview registerNib:[UINib nibWithNibName:@"CertificateManageTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"certiCell"];
         [self.view addSubview:_tableview];
     }
@@ -170,7 +172,6 @@
         _searchBar.myLeftMargin = 15;
         _searchBar.myHeight = 40;
         _searchBar.myWidth = kScreenWidth - 75;
-        //        searchBar.barTintColor = [UIColor clearColor];
         _searchBar.translucent = YES;
         _searchBar.searchBarStyle = UISearchBarStyleMinimal;
         _searchBar.barStyle = UIBarStyleBlack;

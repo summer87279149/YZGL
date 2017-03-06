@@ -10,4 +10,7 @@
 
 @interface SealManagerCell : UITableViewCell
 
+@property (nonatomic, strong) RACSubject *shenQingShiYongClicked;
+@property (nonatomic, strong) RACSubject *piLiangShenQingClicked;
+
 @end

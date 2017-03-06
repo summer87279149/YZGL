@@ -16,6 +16,6 @@ pod 'JHUD'
 pod 'DZNEmptyDataSet'
 pod 'RETableViewManager', '~> 1.6'
 pod 'WMPageController'
-
+pod 'DXPopover'
 
 end

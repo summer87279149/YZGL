@@ -19,17 +19,17 @@
 -(void)openImagePicker
 {
     UIActionSheet *sheet = [[UIActionSheet alloc]initWithTitle:@"选择照片" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"现在拍一张照片",@"从相册中选一张照片", nil];
-    
+    sheet.tag = 1000;
     [sheet showInView:self.view];
 }
 #pragma mark - UIActionsheet Delegate
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 0) {
+    if (buttonIndex == 0&&actionSheet.tag == 1000) {
         if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
             [self openCamera];
         }
         
-    } else if (buttonIndex == 1) {
+    } else if (buttonIndex == 1&&actionSheet.tag == 1000) {
         if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
             [self openPhotoLibrary];
         }
@@ -40,14 +40,48 @@
  */
 - (void)openCamera
 {
-    UIImagePickerController *ipc = [[UIImagePickerController alloc] init];
-    ipc.sourceType = UIImagePickerControllerSourceTypeCamera;
-    ipc.cameraDevice = UIImagePickerControllerCameraDeviceRear;
-    ipc.delegate = self;
-    ipc.allowsEditing = YES;
-    ipc.allowsImageEditing = YES;
-    //    UIViewController *rootVC = [self fl_viewController];
-    [self presentViewController:ipc animated:YES completion:nil];
+    
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        SKFCamera *homec = [[SKFCamera alloc] init];
+        __weak typeof(self) myself = self;
+        homec.fininshcapture = ^(UIImage *ss) {
+            if (ss) {
+                NSLog(@"照片存在");
+                // 1.取出选中的图片
+                UIImage *originalImage = ss;
+                NSData *mData = UIImageJPEGRepresentation(originalImage, 1);
+                UIImage *needImage = nil;
+                
+                needImage = [UIImage imageWithData:mData];
+                
+                CGSize size = needImage.size;
+                float height = 200.0f * size.height/size.width;
+                needImage = [myself imageWithImageSimple:needImage scaledToSize:CGSizeMake(200.0f, height)];
+                NSData *imageData = UIImageJPEGRepresentation(needImage, 1);
+                if (myself.xt_block) {
+                    myself.xt_block(imageData);
+                }
+
+            }
+        };
+        [myself presentViewController:homec
+                             animated:NO
+                           completion:^{
+                           }];
+    } else {
+        NSLog(@"相机调用失败");
+    }
+    
+    
+    
+//    UIImagePickerController *ipc = [[UIImagePickerController alloc] init];
+//    ipc.sourceType = UIImagePickerControllerSourceTypeCamera;
+//    ipc.cameraDevice = UIImagePickerControllerCameraDeviceRear;
+//    ipc.delegate = self;
+//    ipc.allowsEditing = YES;
+//    ipc.allowsImageEditing = YES;
+//    //    UIViewController *rootVC = [self fl_viewController];
+//    [self presentViewController:ipc animated:YES completion:nil];
 }
 
 /**

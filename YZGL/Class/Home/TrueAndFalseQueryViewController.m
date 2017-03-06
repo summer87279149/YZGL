@@ -19,17 +19,28 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+//    self.view.backgroundColor = [UIColor lightGrayColor];
     self.title = @"签字码查询";
     [self setupUI];
 }
 -(void)complete{
     
 }
--(UITextField*)createTextfield:(NSString *)str{
+-(UITextField*)createTextfield:(NSString *)str title:(NSString *)title{
+    UILabel *lab = [[ UILabel alloc]initWithFrame:CGRectMake(0, 0, 50, 30)];
+    lab.text = title;
+    [lab sizeToFit];
+    [self.view addSubview:lab];
     UITextField* tex = [[UITextField alloc]init];
+//    tex.backgroundColor = [UIColor whiteColor];
+    tex.layer.cornerRadius = 3;
+    
+//    tex.layer.borderWidth = 1;
     tex.placeholder = str;
-    tex.myHeight = 40*k_scale;
-    tex.myLeftMargin = tex.myRightMargin = 50*k_scale;
+    tex.myHeight = 30*k_scale;
+    tex.myLeftMargin = tex.myRightMargin = 25*k_scale;
+    tex.leftViewMode=UITextFieldViewModeAlways;
+    tex.leftView = lab;
     return tex;
 }
 -(void)setupUI{
@@ -38,13 +49,13 @@
     vertyLayout.subviewMargin = 20;
     [self.view addSubview:vertyLayout];
     
-    _textField1 = [self createTextfield:@"输入查询名称/编号"];
-    _textField2 = [self createTextfield:@"输入查询签字码"];
+    _textField1 = [self createTextfield:@"输入查询名称/编号" title:@"名称/编号 "];
+    _textField2 = [self createTextfield:@"输入查询签字码" title:@"签字码  "];
     //横向2个
     MyLinearLayout *horzLayout = [MyLinearLayout linearLayoutWithOrientation:MyLayoutViewOrientation_Horz];
     horzLayout.frame = CGRectMake(0, 70, kScreenWidth, 40*k_scale);
     horzLayout.gravity = MyMarginGravity_Vert_Center;
-    _textField3 = [self createTextfield:@"输入验证码"];
+    _textField3 = [self createTextfield:@"输入验证码" title:@"验证码  "];
     _textField3.myWidth = kScreenWidth - 165*k_scale;
     _textField3.myRightMargin = 10;
     [horzLayout addSubview:_textField3];

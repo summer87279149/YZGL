@@ -50,4 +50,5 @@
 #import "MBProgressHUD+MJ.h"
 #import "UIButton+XT_BtnCreate.h"
 #import "UserModel.h"
+#import "SKFCamera.h"
 #endif /* PrefixHeader_pch */

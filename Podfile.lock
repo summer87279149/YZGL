@@ -14,6 +14,7 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - DXPopover (0.1.1)
   - DZNEmptyDataSet (1.8.1)
   - JHUD (0.3.0)
   - Masonry (1.0.2)
@@ -41,6 +42,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
+  - DXPopover
   - DZNEmptyDataSet
   - JHUD
   - Masonry
@@ -54,6 +56,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  DXPopover: 13e6bbd1a0da4e62b2190de51f43a94850769e0f
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   JHUD: 17650f65045d9843a7ad19f6a0b1eac6c78a45d2
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
@@ -68,6 +71,6 @@ SPEC CHECKSUMS:
   SDWebImage-Category: 1f1c00880a538f7faf5b726e1559cf1ca555c553
   WMPageController: 2267f3b40620eb0a74abb19ee2a46ce1d7c61754
 
-PODFILE CHECKSUM: 9394a8336358e07fddedc2eb3bd52f74ca08d8a0
+PODFILE CHECKSUM: 914db20e1609b26e622e060225328fd7ff04ea05
 
 COCOAPODS: 1.2.0.beta.1
