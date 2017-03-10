@@ -96,14 +96,14 @@
     _clampButton.tintColor = [UIColor whiteColor];
     [_clampButton setImage:[TOCropToolbar clampImage] forState:UIControlStateNormal];
     [_clampButton addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:_clampButton];
+//    [self addSubview:_clampButton];隐藏剪裁图片按钮
     
     _rotateButton = [UIButton buttonWithType:UIButtonTypeSystem];
     _rotateButton.contentMode = UIViewContentModeCenter;
     _rotateButton.tintColor = [UIColor whiteColor];
     [_rotateButton setImage:[TOCropToolbar rotateImage] forState:UIControlStateNormal];
     [_rotateButton addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:_rotateButton];
+//    [self addSubview:_rotateButton];隐藏旋转图片按钮
     
     _resetButton = [UIButton buttonWithType:UIButtonTypeSystem];
     _resetButton.contentMode = UIViewContentModeCenter;
@@ -111,7 +111,7 @@
     _resetButton.enabled = NO;
     [_resetButton setImage:[TOCropToolbar resetImage] forState:UIControlStateNormal];
     [_resetButton addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:_resetButton];
+//    [self addSubview:_resetButton];隐藏重设图片按钮
 }
 
 - (void)layoutSubviews

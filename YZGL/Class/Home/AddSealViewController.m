@@ -79,7 +79,7 @@
         self.xt_block = ^(NSData *data){
             cell.pictureView.image = [UIImage imageWithData:data];
         };
-        [self openImagePicker];
+        [self openImagePickerWithType:XTCameraTypeSeal];
     };
  
     [section addItem:self.name];

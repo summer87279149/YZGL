@@ -7,9 +7,14 @@
 //
 #import "UIViewController+CameraAndPhoto.h"
 #import "AddCertifateViewController.h"
-
+typedef NS_ENUM(NSInteger,PhotoPicker) {
+    PhotoPickerBtn1,
+    PhotoPickerBtn2,
+};
 @interface AddCertifateViewController ()
-
+@property (nonatomic, strong) MyLinearLayout*layot1;
+@property (nonatomic, strong) MyLinearLayout*layot2;
+@property (nonatomic, assign) PhotoPicker photoPicker;
 @end
 
 @implementation AddCertifateViewController
@@ -64,21 +69,26 @@
         default:
             break;
     }
-    
-    [layout addSubview:[self createImageView:0 title:str1]];
-    [layout addSubview:[self createImageView:2 title:str2]];
+    _layot1 =[self createImageView:0 title:str1];
+    _layot2 =[self createImageView:2 title:str2];
+    [layout addSubview:_layot1];
+    [layout addSubview:_layot2];
     [layout averageMargin:YES];
     [self.view addSubview:layout];
-    /*
+    
     UIButton *completeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    completeBtn.frame = CGRectMake(60, kScreenHeight-100, kScreenWidth-120, 40);
-    completeBtn.layer.cornerRadius = 10;
-    completeBtn.layer.borderWidth = 1;
-    completeBtn.layer.borderColor = [UIColor blackColor].CGColor;
-    [completeBtn setTitle:@"完成 提交审核" forState:UIControlStateNormal];
-    [completeBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [completeBtn addTarget: self action:@selector(completeBtnClicked) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:completeBtn];*/
+    [completeBtn addTarget: self action:@selector(layot1BtnClicked) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:completeBtn];
+    [completeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(_layot1);
+    }];
+    
+    UIButton *layot2Btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [layot2Btn addTarget: self action:@selector(layot2BtnBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:layot2Btn];
+    [layot2Btn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(_layot2);
+    }];
 }
 
 -(MyLinearLayout*)createImageView:(NSInteger)tag title:(NSString*)title{
@@ -87,34 +97,73 @@
     layout.myWidth = 100;
     layout.gravity = MyMarginGravity_Horz_Center;
     UIImageView *imageView = [[UIImageView alloc]init];
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
     imageView.myLeftMargin = 5;
     imageView.myHeight = 100;
-    imageView.tag = tag;
+    imageView.tag = tag+1000;
     imageView.myWidth = 100;
     [imageView sd_setImageWithURL:nil placeholderImage:[UIImage imageNamed:@"addPic"]];
-    imageView.userInteractionEnabled = YES;
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapImage:)];
+
     UILabel *label = [[UILabel alloc]init];
     label.textAlignment = NSTextAlignmentCenter;
     label.text=title;
     [label sizeToFit];
     [layout addSubview:imageView];
     [layout addSubview:label];
-    [imageView addGestureRecognizer:tap];
     return layout;
 }
--(void)tapImage:(UITapGestureRecognizer*)sender{
-    self.xt_block = ^(NSData *data){
-        UIImageView *view = (UIImageView*)sender.view;
-        view.image = [UIImage imageWithData:data];
-    };
-    [self openImagePicker];
-}
-
--(void)completeBtnClicked{
+-(void)tapImage{
     
 }
 
+
+-(void)layot1BtnClicked{
+    self.photoPicker = PhotoPickerBtn1;
+    WS(weakSelf)
+    UIImageView *view = [_layot1 viewWithTag:1000];
+    if (weakSelf.photoPicker == PhotoPickerBtn1) {
+        weakSelf.xt_block = ^(NSData *data){
+            view.image = [UIImage imageWithData:data];
+        };
+    }
+    switch (self.certifateType) {
+        case CertifateTypeIDCard:
+            [self openImagePickerWithType:XTCameraTypeIdCard];
+            break;
+        case CertifateTypeHuKouBu:
+            [self openImagePickerWithType:XTCameraTypeHuKou];
+            break;
+        case CertifateTypeDIY:
+            [self openImagePickerWithType:XTCameraTypeA4Paper];
+            break;
+        default:
+            break;
+    }
+    
+}
+-(void)layot2BtnBtnClicked{
+    self.photoPicker = PhotoPickerBtn2;
+    UIImageView *view = [_layot2 viewWithTag:1002];
+    WS(weakSelf)
+    self.xt_block = ^(NSData *data){
+        if (weakSelf.photoPicker == PhotoPickerBtn2) {
+            view.image = [UIImage imageWithData:data];
+        }
+    };
+    switch (self.certifateType) {
+        case CertifateTypeIDCard:
+            [self openImagePickerWithType:XTCameraTypeIdCard];
+            break;
+        case CertifateTypeHuKouBu:
+            [self openImagePickerWithType:XTCameraTypeHuKou];
+            break;
+        case CertifateTypeDIY:
+            [self openImagePickerWithType:XTCameraTypeA4Paper];
+            break;
+        default:
+            break;
+    }
+}
 
 
 

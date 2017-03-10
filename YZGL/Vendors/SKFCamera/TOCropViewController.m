@@ -36,7 +36,10 @@ typedef NS_ENUM(NSInteger, TOCropViewControllerAspectRatio) {
     TOCropViewControllerAspectRatio4x3,
     TOCropViewControllerAspectRatio5x4,
     TOCropViewControllerAspectRatio7x5,
-    TOCropViewControllerAspectRatio16x9
+    TOCropViewControllerAspectRatio16x9,
+    TOCropViewControllerAspectRatioIDcar,
+    TOCropViewControllerAspectRatioYuanZhang,
+    TOCropViewControllerAspectRatioZhengJian,
 };
 
 @interface TOCropViewController () <UIActionSheetDelegate, UIViewControllerTransitioningDelegate, TOCropViewDelegate>
@@ -106,6 +109,8 @@ typedef NS_ENUM(NSInteger, TOCropViewControllerAspectRatio) {
     self.transitioningDelegate = self;
     
     self.view.backgroundColor = self.cropView.backgroundColor;
+    //直接执行剪裁图片方法
+    [self cropImage];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -265,22 +270,9 @@ typedef NS_ENUM(NSInteger, TOCropViewControllerAspectRatio) {
     BOOL verticalCropBox = self.cropView.cropBoxAspectRatioIsPortrait;
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
                                                              delegate:self
-                                                    cancelButtonTitle:NSLocalizedStringFromTableInBundle(@"取消",
-                                                                                                         @"TOCropViewControllerLocalizable",
-                                                                                                         [NSBundle bundleForClass:[self class]],
-                                                                                                         nil)
-                                               destructiveButtonTitle:nil
-                                                    otherButtonTitles:NSLocalizedStringFromTableInBundle(@"原始",
-                                                                                                          @"TOCropViewControllerLocalizable",
-                                                                                                          [NSBundle bundleForClass:[self class]],
-                                                                                                          nil),
-                                                                      NSLocalizedStringFromTableInBundle(@"正方形",
-                                                                                                         @"TOCropViewControllerLocalizable",
-                                                                                                         [NSBundle bundleForClass:[self class]],
-                                                                                                         nil),
-                                                                      verticalCropBox ? @"2:3" : @"3:2",
-                                                                            verticalCropBox ? @"3:4" : @"4:3",
-                                                                                    verticalCropBox ? @"9:16" : @"16:9",nil];
+     cancelButtonTitle:NSLocalizedStringFromTableInBundle(@"取消",@"TOCropViewControllerLocalizable",[NSBundle bundleForClass:[self class]],nil)
+destructiveButtonTitle:nil otherButtonTitles:NSLocalizedStringFromTableInBundle(@"原始",@"TOCropViewControllerLocalizable",[NSBundle bundleForClass:[self class]],nil),NSLocalizedStringFromTableInBundle(@"正方形",@"TOCropViewControllerLocalizable",[NSBundle bundleForClass:[self class]],nil),verticalCropBox ? @"2:3" : @"3:2",
+verticalCropBox ? @"3:4" : @"4:3",verticalCropBox ? @"9:16" : @"16:9",nil];
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
         [actionSheet showFromRect:self.toolbar.clampButtonFrame inView:self.toolbar animated:YES];
@@ -291,47 +283,72 @@ typedef NS_ENUM(NSInteger, TOCropViewControllerAspectRatio) {
 
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-    CGSize aspectRatio = CGSizeZero;
     
-    switch (buttonIndex) {
-        case TOCropViewControllerAspectRatioOriginal:
-            aspectRatio = CGSizeZero;
+//    switch (buttonIndex) {
+//        case TOCropViewControllerAspectRatioOriginal:
+//            aspectRatio = CGSizeZero;
+//            break;
+//        case TOCropViewControllerAspectRatioSquare:
+//            aspectRatio = CGSizeMake(1.0f, 1.0f);
+//            break;
+//        case TOCropViewControllerAspectRatio3x2:
+//            aspectRatio = CGSizeMake(3.0f, 2.0f);
+//            break;
+//        case TOCropViewControllerAspectRatio5x3:
+//            aspectRatio = CGSizeMake(5.0f, 3.0f);
+//            break;
+////        case TOCropViewControllerAspectRatio4x3:
+////            aspectRatio = CGSizeMake(4.0f, 3.0f);
+////            break;
+////        case TOCropViewControllerAspectRatio5x4:
+////            aspectRatio = CGSizeMake(5.0f, 4.0f);
+////            break;
+////        case TOCropViewControllerAspectRatio7x5:
+////            aspectRatio = CGSizeMake(7.0f, 5.0f);
+////            break;
+////        case TOCropViewControllerAspectRatio16x9:
+////            aspectRatio = CGSizeMake(8.0f, 16.0f);
+////            break;
+////        case TOCropViewControllerAspectRatioIDcar:
+////            aspectRatio = CGSizeMake(16.0f, 9.0f);
+////            break;
+//        default:
+//            return;
+//    }
+    
+//    if (self.cropView.cropBoxAspectRatioIsPortrait) {
+//        CGFloat width = aspectRatio.width;
+//        aspectRatio.width = aspectRatio.height;
+//        aspectRatio.height = width;
+//    }
+//
+    
+}
+//自定义剪裁图片的方法
+-(void)cropImage{
+    CGSize aspectRatio = CGSizeZero;
+    switch (self.cameraType) {
+        case XTCameraTypeA4Paper:
+            aspectRatio = CGSizeMake(16.0f, 22.6f);
             break;
-        case TOCropViewControllerAspectRatioSquare:
+        case XTCameraTypeSeal:
             aspectRatio = CGSizeMake(1.0f, 1.0f);
             break;
-        case TOCropViewControllerAspectRatio3x2:
-            aspectRatio = CGSizeMake(3.0f, 2.0f);
+        case XTCameraTypeCircleSeal:
+            aspectRatio = CGSizeMake(16.0f, 10.7f);
             break;
-        case TOCropViewControllerAspectRatio5x3:
-            aspectRatio = CGSizeMake(5.0f, 3.0f);
+        case XTCameraTypeIdCard:
+            aspectRatio = CGSizeMake(16.0f, 10.18f);
             break;
-        case TOCropViewControllerAspectRatio4x3:
-            aspectRatio = CGSizeMake(4.0f, 3.0f);
-            break;
-        case TOCropViewControllerAspectRatio5x4:
-            aspectRatio = CGSizeMake(5.0f, 4.0f);
-            break;
-        case TOCropViewControllerAspectRatio7x5:
-            aspectRatio = CGSizeMake(7.0f, 5.0f);
-            break;
-        case TOCropViewControllerAspectRatio16x9:
-            aspectRatio = CGSizeMake(16.0f, 9.0f);
+        case XTCameraTypeHuKou:
+            aspectRatio = CGSizeMake(16.0f, 11.77f);
             break;
         default:
-            return;
+            break;
     }
-    
-    if (self.cropView.cropBoxAspectRatioIsPortrait) {
-        CGFloat width = aspectRatio.width;
-        aspectRatio.width = aspectRatio.height;
-        aspectRatio.height = width;
-    }
-    
     [self.cropView setAspectLockEnabledWithAspectRatio:aspectRatio animated:YES];
     self.toolbar.clampButtonGlowing = YES;
 }
-
 - (void)rotateCropView
 {
     [self.cropView rotateImageNinetyDegreesAnimated:YES];

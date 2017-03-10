@@ -5,44 +5,53 @@
 //  Created by Admin on 17/2/28.
 //  Copyright © 2017年 Admin. All rights reserved.
 //
+
+#import "TOCropViewController.h"
 #import "UIImage+Mo.h"
 #import "UIViewController+CameraAndPhoto.h"
 #import <objc/message.h>
 
 @implementation UIViewController (CameraAndPhoto)
+
 -(void)setXt_block:(getImageBlock)xt_block{
     objc_setAssociatedObject(self, @"xt_block", xt_block, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 -(getImageBlock)xt_block{
    return  objc_getAssociatedObject(self, @"xt_block");
 }
--(void)openImagePicker
+
+
+-(void)openImagePickerWithType:(XTCameraType)type
 {
     UIActionSheet *sheet = [[UIActionSheet alloc]initWithTitle:@"选择照片" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"现在拍一张照片",@"从相册中选一张照片", nil];
     sheet.tag = 1000;
+    NSNumber *typeNumber = [NSNumber numberWithInteger:type];
+    objc_setAssociatedObject(sheet, @"cameratype", typeNumber, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     [sheet showInView:self.view];
 }
 #pragma mark - UIActionsheet Delegate
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    NSNumber *typeNumber = objc_getAssociatedObject(actionSheet, @"cameratype");
     if (buttonIndex == 0&&actionSheet.tag == 1000) {
         if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-            [self openCamera];
+            [self openCameraWithType:[typeNumber integerValue]];
         }
         
     } else if (buttonIndex == 1&&actionSheet.tag == 1000) {
         if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
-            [self openPhotoLibrary];
+            [self openPhotoLibraryWithType:typeNumber];
         }
     }
 }
 /**
  *  打开相机
  */
-- (void)openCamera
+- (void)openCameraWithType:(XTCameraType)type
 {
     
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         SKFCamera *homec = [[SKFCamera alloc] init];
+        homec.cameraType = type;
         __weak typeof(self) myself = self;
         homec.fininshcapture = ^(UIImage *ss) {
             if (ss) {
@@ -51,9 +60,7 @@
                 UIImage *originalImage = ss;
                 NSData *mData = UIImageJPEGRepresentation(originalImage, 1);
                 UIImage *needImage = nil;
-                
                 needImage = [UIImage imageWithData:mData];
-                
                 CGSize size = needImage.size;
                 float height = 200.0f * size.height/size.width;
                 needImage = [myself imageWithImageSimple:needImage scaledToSize:CGSizeMake(200.0f, height)];
@@ -61,7 +68,6 @@
                 if (myself.xt_block) {
                     myself.xt_block(imageData);
                 }
-
             }
         };
         [myself presentViewController:homec
@@ -87,14 +93,23 @@
 /**
  *  打开相册
  */
-- (void)openPhotoLibrary
+- (void)openPhotoLibraryWithType:(NSNumber *)typeNumber
 {
     UIImagePickerController *ipc = [[UIImagePickerController alloc] init];
     ipc.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
     ipc.delegate = self;
-    ipc.allowsEditing = YES;
+//    ipc.allowsEditing = YES;
+    objc_setAssociatedObject(ipc, @"cameraType", typeNumber, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     //    UIViewController *rootVC = [self fl_viewController];
     [self presentViewController:ipc animated:YES completion:nil];
+}
+//
+- (UIImage *)createViewImage:(UIView *)shareView {
+    UIGraphicsBeginImageContextWithOptions(shareView.bounds.size, NO, [UIScreen mainScreen].scale);
+    [shareView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage * image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
 }
 /**
  *根据给定的size的宽高比自动缩放原图片、自动判断截取位置,进行图片截取
@@ -126,30 +141,38 @@
     }
     return nil;
 }
+
 #pragma mark - UIImagePickerControllerDelegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    
     //    NSValue *value = [info objectForKey:UIImagePickerControllerCropRect] ;
     //    CGRect  rect = value.CGRectValue;
     //    NSLog(@"选择完图片的info：%@,cgrect 是:%@",info,rect);
-    [picker dismissViewControllerAnimated:YES completion:nil];
+//    [picker dismissViewControllerAnimated:YES completion:nil];
     
-    // 1.取出选中的图片
-    UIImage *originalImage = info[UIImagePickerControllerEditedImage];
-    //    UIImage * originalImage =  [UIImage imageFromImage:originalImageeee inRect:rect];
-    NSData *mData = UIImageJPEGRepresentation(originalImage, 1);
-    UIImage *needImage = nil;
+//    // 1.取出选中的图片
+//    UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
+//    //    UIImage * originalImage =  [UIImage imageFromImage:originalImageeee inRect:rect];
+//    NSData *mData = UIImageJPEGRepresentation(originalImage, 1);
+//    UIImage *needImage = nil;
+//    
+//    needImage = [UIImage imageWithData:mData];
+//    
+//    CGSize size = needImage.size;
+//    float height = 200.0f * size.height/size.width;
+//    needImage = [self imageWithImageSimple:needImage scaledToSize:CGSizeMake(200.0f, height)];
+//    NSData *imageData = UIImageJPEGRepresentation(needImage, 1);
+//    
+   //周四在此修改
+    UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
+    TOCropViewController *cropController = [[TOCropViewController alloc] initWithImage:originalImage];
+    cropController.delegate = self;
+    NSNumber*typeNum = objc_getAssociatedObject(picker, @"cameraType");
+    cropController.cameraType = [typeNum integerValue];
+    [picker presentViewController:cropController animated:YES completion:nil];
     
-    needImage = [UIImage imageWithData:mData];
     
-    CGSize size = needImage.size;
-    float height = 200.0f * size.height/size.width;
-    needImage = [self imageWithImageSimple:needImage scaledToSize:CGSizeMake(200.0f, height)];
-    NSData *imageData = UIImageJPEGRepresentation(needImage, 1);
-    if (self.xt_block) {
-        self.xt_block(imageData);
-    }
+    
 }
 
 //按比例压缩
@@ -173,6 +196,21 @@
     
 }
 
+#pragma mark - TOCropViewController代理
+- (void)cropViewController:(TOCropViewController *)cropViewController didCropToImage:(UIImage *)image withRect:(CGRect)cropRect angle:(NSInteger)angle{
+    
+    NSData *imageData = UIImageJPEGRepresentation(image, 1);
+    if (self.xt_block) {
+        self.xt_block(imageData);
+    }
+    [self dismissViewControllerAnimated:NO completion:^{
+    }];
+    [self dismissViewControllerAnimated:NO completion:^{
+    }];
+
+
+}
+#pragma mark - 返回当前所在控制器
 - (UIViewController *)imc_viewController:(UIViewController *)vc {
     UIResponder *responder = vc;
     while ([responder isKindOfClass:[UIView class]]) {
@@ -222,5 +260,6 @@
     }
     return vc;
 }
+
 
 @end

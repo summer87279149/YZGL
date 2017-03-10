@@ -86,7 +86,7 @@
         UIImageView *view = (UIImageView*)sender.view;
         view.image = [UIImage imageWithData:data];
     };
-    [self openImagePicker];
+    [self openImagePickerWithType:XTCameraTypeA4Paper];
 }
 -(void)setupview{
     self.manager = [[RETableViewManager alloc] initWithTableView:self.tableview];

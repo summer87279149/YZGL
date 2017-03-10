@@ -57,7 +57,7 @@
 @end
 
 @interface TOCropViewController : UIViewController
-
+@property (nonatomic, assign) XTCameraType cameraType;
 /**
  The original, uncropped image that was passed to this controller.
  */
@@ -94,6 +94,7 @@
  If `showActivitySheetOnDone` is true, then you may expliclty set activities that won't appear in the share sheet here.
  */
 @property (nonatomic, strong) NSArray *excludedActivityTypes;
+
 
 ///------------------------------------------------
 /// @name Object Creation

@@ -188,10 +188,11 @@
     __weak typeof(self) weakSelf = self;
     // 去拍照
     [self.camera capture:^(LLSimpleCamera *camera, UIImage *image, NSDictionary *metadata, NSError *error) {
-        NSLog(@"拍照结束");
         if(!error) {
             TOCropViewController *cropController = [[TOCropViewController alloc] initWithImage:image];
             cropController.delegate = self;
+            cropController.cameraType = self.cameraType;
+//            [cropController presentAnimatedFromParentViewController:weakSelf fromFrame:CGRectMake(kScreenWidth/2, kScreenWidth/2, 100, 100) completion:nil];
             [weakSelf presentViewController:cropController animated:YES completion:nil];
         }
         else {

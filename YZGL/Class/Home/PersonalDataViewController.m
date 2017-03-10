@@ -62,7 +62,7 @@
         @strongify(self)
         self.image.image = [UIImage imageWithData:data];
     };
-    [self openImagePicker];
+    [self openImagePickerWithType:XTCameraTypeSeal];
 }
 -(UITableView*)tableview{
     if(!_tableview){

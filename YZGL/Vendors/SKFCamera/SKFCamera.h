@@ -9,9 +9,15 @@
  Created by 孙凯峰 on 2016/10/18.
  */
 #import <UIKit/UIKit.h>
-typedef void (^fininshcapture)(UIImage
-*image);
+typedef NS_ENUM(NSInteger,XTCameraType){
+    XTCameraTypeA4Paper,
+    XTCameraTypeSeal,
+    XTCameraTypeCircleSeal,
+    XTCameraTypeIdCard,
+    XTCameraTypeHuKou,
+};
+typedef void (^fininshcapture)(UIImage *image);
 @interface SKFCamera : UIViewController
 @property (nonatomic,copy) fininshcapture fininshcapture;
-
+@property (nonatomic, assign) XTCameraType cameraType;
 @end

@@ -5,6 +5,7 @@
 //  Created by Admin on 17/3/6.
 //  Copyright © 2017年 Admin. All rights reserved.
 //
+#import "CreateMatterViewController.h"
 #import "MatterListItemViewController.h"
 #import "MatterListViewController.h"
 
@@ -35,7 +36,8 @@
 }
 
 -(void)create:(UIBarButtonItem*)item{
-    
+    CreateMatterViewController *vc = [[CreateMatterViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(void)createSegment{

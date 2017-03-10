@@ -5,6 +5,7 @@
 //  Created by Admin on 17/2/27.
 //  Copyright © 2017年 Admin. All rights reserved.
 //
+#import "UserLoginViewController.h"
 #import "MatterListViewController.h"
 #import "ElectronicalRealViewController.h"
 #import "SealManagerViewController.h"
@@ -36,7 +37,7 @@
         case 4:{ [self xt_pushWithViewControllerClass:[ElectronicalRealViewController class]]; }break;
         case 5:{ [self xt_pushWithViewControllerClass:[MatterListViewController class]]; }break;
         default:{
-            LoginViewController *vc = [[LoginViewController alloc]init];
+            UserLoginViewController *vc = [[UserLoginViewController alloc]init];
             [self.navigationController pushViewController:vc animated:YES];
         }
             break;
