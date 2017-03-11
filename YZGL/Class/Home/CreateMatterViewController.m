@@ -75,7 +75,7 @@
     [section addItem:self.matterTitle];
     [section addItem:self.content];
     [section addItem:self.uploadPic];
-    [section addItem:self.uploadVoice];
+//    [section addItem:self.uploadVoice];
     [section addItem:self.needSignature];
     [self.view addSubview:self.completeBtn];
     self.completeBtn.frame = CGRectMake(20, CGRectGetMaxY(self.tableview.frame), kScreenWidth-40, 40);

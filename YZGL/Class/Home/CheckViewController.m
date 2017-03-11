@@ -64,7 +64,7 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [self xt_pushWithViewControllerClass:[FileDetailViewController class]];
+    [self.navigationController pushViewController:[FileDetailViewController new] animated:YES];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

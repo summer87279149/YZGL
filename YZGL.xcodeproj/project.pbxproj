@@ -88,7 +88,6 @@
 		840C2A7B1E7137BA001EA340 /* draw_width_3_s@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 840C2A731E7137BA001EA340 /* draw_width_3_s@2x.png */; };
 		840C2A7C1E7137BA001EA340 /* draw_width_3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 840C2A741E7137BA001EA340 /* draw_width_3@2x.png */; };
 		840C2A7D1E7137BA001EA340 /* draw_width@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 840C2A751E7137BA001EA340 /* draw_width@2x.png */; };
-		840C2A951E7155BE001EA340 /* UIView+XTDraggable.m in Sources */ = {isa = PBXBuildFile; fileRef = 840C2A941E7155BE001EA340 /* UIView+XTDraggable.m */; };
 		840DF1701E63B03A002A7E9C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 840DF16F1E63B03A002A7E9C /* main.m */; };
 		840DF1731E63B03A002A7E9C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 840DF1721E63B03A002A7E9C /* AppDelegate.m */; };
 		840DF1791E63B03A002A7E9C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 840DF1771E63B03A002A7E9C /* Main.storyboard */; };
@@ -381,6 +380,7 @@
 		840F3E451E6962AA00B79076 /* AddSealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F3E441E6962AA00B79076 /* AddSealViewController.m */; };
 		840F3E481E69684F00B79076 /* LastCellAddPhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F3E471E69684F00B79076 /* LastCellAddPhotoCell.m */; };
 		840F3E4B1E696AC200B79076 /* LastCellItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F3E4A1E696AC200B79076 /* LastCellItem.m */; };
+		841308951E73AD4C000CD9F5 /* UIImageView+XTDraggalbleImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 841308941E73AD4C000CD9F5 /* UIImageView+XTDraggalbleImage.m */; };
 		841A19311E666FCD00D3540B /* PersonalDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 841A192F1E666FCD00D3540B /* PersonalDataViewController.m */; };
 		841A19341E667B5100D3540B /* RealNameAauthentication.png in Resources */ = {isa = PBXBuildFile; fileRef = 841A19331E667B5100D3540B /* RealNameAauthentication.png */; };
 		841A193C1E667D3000D3540B /* CertificateManageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 841A193B1E667D3000D3540B /* CertificateManageViewController.m */; };
@@ -564,8 +564,6 @@
 		840C2A731E7137BA001EA340 /* draw_width_3_s@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "draw_width_3_s@2x.png"; sourceTree = "<group>"; };
 		840C2A741E7137BA001EA340 /* draw_width_3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "draw_width_3@2x.png"; sourceTree = "<group>"; };
 		840C2A751E7137BA001EA340 /* draw_width@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "draw_width@2x.png"; sourceTree = "<group>"; };
-		840C2A931E7155BE001EA340 /* UIView+XTDraggable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+XTDraggable.h"; sourceTree = "<group>"; };
-		840C2A941E7155BE001EA340 /* UIView+XTDraggable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+XTDraggable.m"; sourceTree = "<group>"; };
 		840DF16B1E63B03A002A7E9C /* YZGL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YZGL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		840DF16F1E63B03A002A7E9C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		840DF1711E63B03A002A7E9C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -1125,6 +1123,8 @@
 		840F3E471E69684F00B79076 /* LastCellAddPhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LastCellAddPhotoCell.m; sourceTree = "<group>"; };
 		840F3E491E696AC200B79076 /* LastCellItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LastCellItem.h; sourceTree = "<group>"; };
 		840F3E4A1E696AC200B79076 /* LastCellItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LastCellItem.m; sourceTree = "<group>"; };
+		841308931E73AD4C000CD9F5 /* UIImageView+XTDraggalbleImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+XTDraggalbleImage.h"; sourceTree = "<group>"; };
+		841308941E73AD4C000CD9F5 /* UIImageView+XTDraggalbleImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+XTDraggalbleImage.m"; sourceTree = "<group>"; };
 		841A192E1E666FCD00D3540B /* PersonalDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalDataViewController.h; sourceTree = "<group>"; };
 		841A192F1E666FCD00D3540B /* PersonalDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalDataViewController.m; sourceTree = "<group>"; };
 		841A19331E667B5100D3540B /* RealNameAauthentication.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RealNameAauthentication.png; sourceTree = "<group>"; };
@@ -1566,8 +1566,8 @@
 		840DF1881E63B10B002A7E9C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				840C2A931E7155BE001EA340 /* UIView+XTDraggable.h */,
-				840C2A941E7155BE001EA340 /* UIView+XTDraggable.m */,
+				841308931E73AD4C000CD9F5 /* UIImageView+XTDraggalbleImage.h */,
+				841308941E73AD4C000CD9F5 /* UIImageView+XTDraggalbleImage.m */,
 				841A19511E66B07500D3540B /* UIButton+XT_BtnCreate.h */,
 				841A19521E66B07500D3540B /* UIButton+XT_BtnCreate.m */,
 				840F089E1E656EC800961F26 /* UIViewController+CameraAndPhoto.h */,
@@ -3404,7 +3404,7 @@
 				840DF4311E63B1AD002A7E9C /* UIView+JKConstraints.m in Sources */,
 				840DF43D1E63B1AD002A7E9C /* UIViewController+JKBackButtonTouched.m in Sources */,
 				840DF3CA1E63B1AD002A7E9C /* NSTimer+JKBlocks.m in Sources */,
-				840C2A951E7155BE001EA340 /* UIView+XTDraggable.m in Sources */,
+				841308951E73AD4C000CD9F5 /* UIImageView+XTDraggalbleImage.m in Sources */,
 				840DF3DE1E63B1AD002A7E9C /* UIApplication+JKNetworkActivityIndicator.m in Sources */,
 				8405230A1E6D46180071D732 /* FileDetailViewController.m in Sources */,
 				840DF4741E63B1B3002A7E9C /* REFrostedContainerViewController.m in Sources */,

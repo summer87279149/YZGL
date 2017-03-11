@@ -68,6 +68,7 @@
     _doneButton.frame = CGRectMake(self.view.tz_width - 44 - 12, 0, 44, 44);
     _doneButton.titleLabel.font = [UIFont systemFontOfSize:16];
     [_doneButton addTarget:self action:@selector(doneButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    
     TZImagePickerController *tzImagePickerVc = (TZImagePickerController *)self.navigationController;
     if (tzImagePickerVc) {
         [_doneButton setTitle:tzImagePickerVc.doneBtnTitleStr forState:UIControlStateNormal];
@@ -82,6 +83,7 @@
     byteLabel.textColor = [UIColor whiteColor];
     byteLabel.font = [UIFont systemFontOfSize:13];
     byteLabel.frame = CGRectMake(10, 0, 100, 44);
+    
     [[TZImageManager manager] getPhotosBytesWithArray:@[_model] completion:^(NSString *totalBytes) {
         byteLabel.text = totalBytes;
     }];

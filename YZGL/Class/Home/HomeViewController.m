@@ -31,11 +31,11 @@
 #pragma mark - UITableView
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     switch (indexPath.row) {
-        case 0:{ [self xt_pushWithViewControllerClass:[CertificateManageViewController class]]; } break;
-        case 1:{ [self xt_pushWithViewControllerClass:[SealManagerViewController class]]; } break;
-        case 3:{ [self xt_pushWithViewControllerClass:[TrueAndFalseQueryViewController class]]; }break;
-        case 4:{ [self xt_pushWithViewControllerClass:[ElectronicalRealViewController class]]; }break;
-        case 5:{ [self xt_pushWithViewControllerClass:[MatterListViewController class]]; }break;
+        case 0:{ [self.navigationController pushViewController:[CertificateManageViewController new] animated:YES];} break;
+        case 1:{ [self.navigationController pushViewController:[SealManagerViewController new] animated:YES];} break;
+        case 3:{  [self.navigationController pushViewController:[TrueAndFalseQueryViewController new] animated:YES];}break;
+        case 4:{  [self.navigationController pushViewController:[ElectronicalRealViewController new] animated:YES];}break;
+        case 5:{    [self.navigationController pushViewController:[MatterListViewController new] animated:YES];}break;
         default:{
             UserLoginViewController *vc = [[UserLoginViewController alloc]init];
             [self.navigationController pushViewController:vc animated:YES];

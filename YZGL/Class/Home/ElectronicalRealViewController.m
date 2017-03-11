@@ -83,9 +83,11 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (self.topSwitch.selectedSegmentIndex == 0) {
-        [self xt_pushWithViewControllerClass:[UploadFileViewController class]];
+        [self.navigationController pushViewController:[UploadFileViewController new] animated:YES];
+
     }else{
-        [self xt_pushWithViewControllerClass:[FileDetailViewController class]];
+        [self.navigationController pushViewController:[FileDetailViewController new] animated:YES];
+
     }
 }
 

@@ -37,7 +37,7 @@
 }
 
 -(void)add{
-    [self xt_pushWithViewControllerClass:[AddStaffViewController class]];
+    [self.navigationController pushViewController:[AddStaffViewController new] animated:YES];
 }
 
 

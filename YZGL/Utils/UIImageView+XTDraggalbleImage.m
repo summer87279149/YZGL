@@ -1,17 +1,17 @@
 //
-//  UIView+XTDraggable.m
-//  大大舒服的
+//  UIImageView+XTDraggalbleImage.m
+//  YZGL
 //
-//  Created by Admin on 17/3/9.
+//  Created by Admin on 17/3/11.
 //  Copyright © 2017年 Admin. All rights reserved.
 //
 
-#import "UIView+XTDraggable.h"
+#import "UIImageView+XTDraggalbleImage.h"
 #import <objc/runtime.h>
 #define PADDING     5
 static void *DragEnableKey = &DragEnableKey;
 static void *AdsorbEnableKey = &AdsorbEnableKey;
-@implementation UIView (XTDraggable)
+@implementation UIImageView (XTDraggalbleImage)
 
 -(void)setDragEnable:(BOOL)dragEnable
 {
@@ -49,6 +49,7 @@ CGPoint beginPoint;
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    
     if (![objc_getAssociatedObject(self, DragEnableKey) boolValue]) {
         return;
     }
@@ -57,8 +58,8 @@ CGPoint beginPoint;
     CGPoint prePoint = [touch previousLocationInView:self];
     float offsetX = nowPoint.x - prePoint.x;
     float offsetY = nowPoint.y - prePoint.y;
-//    self.transform =  // 移动当前view
-//    self.transform = CGAffineTransformTranslate(self.transform, offsetX, offsetY);
+    //    self.transform =  // 移动当前view
+    //    self.transform = CGAffineTransformTranslate(self.transform, offsetX, offsetY);
     
     
     
@@ -93,9 +94,8 @@ CGPoint beginPoint;
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    //    NSLog(@"当前位置:%@",NSStringFromCGRect(self.frame));
     
-    NSLog(@"当前位置:%@",NSStringFromCGRect(self.frame));
-   
 }
 
 @end

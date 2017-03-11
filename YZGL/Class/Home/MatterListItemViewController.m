@@ -49,7 +49,7 @@
 }
 #pragma mark - tableview
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [self xt_pushWithViewControllerClass:[DetailMatterViewController class]];
+    [self.navigationController pushViewController:[DetailMatterViewController new] animated:YES];
 }
 -(UITableView*)tableview{
     if(!_tableview){

@@ -67,15 +67,16 @@
     }
     
     if ([cell.textLabel.text isEqualToString:@"人员管理"]) {
-        [self xt_pushWithViewControllerClass:[StaffManageViewController class]];
+        [self.navigationController pushViewController:[StaffManageViewController new] animated:YES];
     }
     
     if ([cell.textLabel.text isEqualToString:@"签字码设置"]) {
-        [self xt_pushWithViewControllerClass:[QianZiCodeViewController class]];
+        [self.navigationController pushViewController:[QianZiCodeViewController new] animated:YES];
     }
     
     if ([cell.textLabel.text isEqualToString:@"安全设置"]) {
         SecuritySettingViewController*vc = [[SecuritySettingViewController alloc]init];
+        
         [self.navigationController pushViewController:vc animated:YES];
     }
     

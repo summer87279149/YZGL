@@ -187,10 +187,10 @@
     
     [results enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         NSManagedObject *object = (NSManagedObject *)obj;
-        if([object validateForDelete:&error])
-            NSLog(@"CoreData Delete error: %@", [error userInfo]);
-        else
-            [self deleteObject:object];
+        if([object validateForDelete:&error]){
+            NSLog(@"CoreData Delete error: %@", [error userInfo]);}
+        else {
+            [self deleteObject:object];}
         
     }];
     

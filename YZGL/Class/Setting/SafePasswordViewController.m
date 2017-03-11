@@ -62,7 +62,7 @@
     self.completeBtn.layer.cornerRadius = 3;
 }
 -(void)pushVC{
-    [self xt_pushWithViewControllerClass:[UIViewController class]];
+    [self.navigationController pushViewController:[UIViewController new] animated:YES];
 }
 -(void)completeClicked{
     if([self validateButtonPressed]){

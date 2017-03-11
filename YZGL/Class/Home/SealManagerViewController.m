@@ -38,14 +38,14 @@
 }
 -(void)btnClicked:(UIButton*)sender{
     if (sender == self.button1) {
-        [self xt_pushWithViewControllerClass:[ApplyRecordViewController class]];
+        [self.navigationController pushViewController:[ApplyRecordViewController new] animated:YES];
     }
     if (sender == self.button2) {
-        [self xt_pushWithViewControllerClass:[CheckRecordViewController class]];
+        [self.navigationController pushViewController:[CheckRecordViewController new] animated:YES];
     }
 }
 -(void)addSeal{
-    [self xt_pushWithViewControllerClass:[AddSealViewController class]];
+    [self.navigationController pushViewController:[AddSealViewController new] animated:YES];
 }
 
 
