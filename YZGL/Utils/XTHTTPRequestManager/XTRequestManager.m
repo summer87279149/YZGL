@@ -37,32 +37,24 @@ responseSeializerType:(NHResponseSeializerType)type
     failure:(void (^)(NSError *))failure {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager sharedManager];
 //    manager.requestSerializer.cachePolicy= NSURLRequestReturnCacheDataElseLoad;
-    
     manager.requestSerializer.timeoutInterval=30.f;
        // 如果不是JSON 或者 不是Default 才设置解析器类型
     if (type != NHResponseSeializerTypeJSON && type != NHResponseSeializerTypeDefault) {
         manager.responseSerializer = [self responseSearalizerWithSerilizerType:type];
     }
-    
-    
     [manager GET:URLString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
         // 成功
         if (success) {
             success(responseObject);
         }
         //        NSLog(@"%@", responseObject);
-        
-        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
         // 失败
         if (failure) {
 //            [MBProgressHUD showError:@"请求超时，请检查网络状况"];
             NSLog(@"请求失败统一返回错误信息:%@",error);
             failure(error);
         }
-        
     }];
 }
 
@@ -120,7 +112,6 @@ constructingBodyWithBlock:(void (^)(id<AFMultipartFormData>))block
     AFHTTPSessionManager *manager = [AFHTTPSessionManager sharedManager];
     
     
-    // 如果不是JSON 或者 不是Default 才设置解析器类型
     if (type != NHResponseSeializerTypeJSON && type != NHResponseSeializerTypeDefault) {
         manager.responseSerializer = [self responseSearalizerWithSerilizerType:type];
     }

@@ -70,6 +70,7 @@ CGPoint beginPoint;
     {
         CGFloat x = self.superview.frame.size.width-self.frame.size.width/2;
         self.center = CGPointMake(x, self.center.y + offsetY);
+        
     }
     else if (self.center.x < self.frame.size.width/2)
     {

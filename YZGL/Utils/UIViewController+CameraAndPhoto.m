@@ -16,6 +16,7 @@
 -(void)setXt_block:(getImageBlock)xt_block{
     objc_setAssociatedObject(self, @"xt_block", xt_block, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
+
 -(getImageBlock)xt_block{
    return  objc_getAssociatedObject(self, @"xt_block");
 }
@@ -239,6 +240,7 @@
         }
         else{
             vc = vc.presentedViewController;
+            
         }
     }
     // push

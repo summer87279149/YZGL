@@ -30,6 +30,7 @@
  */
 - (NSString *)jk_webColorString
 {
+    
     CGFloat *arrRGBA = [self jk_getRGB];
     int r = arrRGBA[0] * 255;
     int g = arrRGBA[1] * 255;

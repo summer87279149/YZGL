@@ -9,6 +9,7 @@
 #import "UIColor+JKModify.h"
 
 @implementation UIColor (JKModify)
+
 - (UIColor *)jk_invertedColor{
     NSArray *components = [self jk_componentArray];
     return [UIColor colorWithRed:1-[components[0] doubleValue] green:1-[components[1] doubleValue] blue:1-[components[2] doubleValue] alpha:[components[3] doubleValue]];
