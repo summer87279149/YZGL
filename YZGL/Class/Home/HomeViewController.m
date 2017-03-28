@@ -5,6 +5,8 @@
 //  Created by Admin on 17/2/27.
 //  Copyright © 2017年 Admin. All rights reserved.
 //
+#import "Login2ViewController.h"
+#import "BeforeScanSingleton.h"
 #import "UserLoginViewController.h"
 #import "MatterListViewController.h"
 #import "ElectronicalRealViewController.h"
@@ -33,9 +35,10 @@
     switch (indexPath.row) {
         case 0:{ [self.navigationController pushViewController:[CertificateManageViewController new] animated:YES];} break;
         case 1:{ [self.navigationController pushViewController:[SealManagerViewController new] animated:YES];} break;
-        case 3:{  [self.navigationController pushViewController:[TrueAndFalseQueryViewController new] animated:YES];}break;
-        case 4:{  [self.navigationController pushViewController:[ElectronicalRealViewController new] animated:YES];}break;
-        case 5:{    [self.navigationController pushViewController:[MatterListViewController new] animated:YES];}break;
+        case 2:{ [self.navigationController pushViewController:[Login2ViewController new] animated:YES];}break;
+        case 3:{ [self.navigationController pushViewController:[TrueAndFalseQueryViewController new] animated:YES];}break;
+        case 4:{ [self.navigationController pushViewController:[ElectronicalRealViewController new] animated:YES];}break;
+        case 5:{ [self.navigationController pushViewController:[MatterListViewController new] animated:YES];}break;
         default:{
             UserLoginViewController *vc = [[UserLoginViewController alloc]init];
             [self.navigationController pushViewController:vc animated:YES];
@@ -83,6 +86,11 @@
 -(void)setupView{
     self.navigationController.delegate = self;
     SearchView *searchView = [[SearchView alloc]initWithFrame:CGRectMake(0, 20, kScreenWidth, 44)];
+    searchView.delegate = [RACSubject subject];
+    WS(weakSelf)
+    [searchView.delegate subscribeNext:^(id x) {
+        [weakSelf erweima];
+    }];
     [self.view addSubview:searchView];
 //    [searchView mas_makeConstraints:^(MASConstraintMaker *make) {
 //        make.height.mas_equalTo(44);
@@ -173,6 +181,9 @@
 -(void)pushPersonalData{
     PersonalDataViewController *vc = [[PersonalDataViewController alloc]init];
     [self.navigationController pushViewController:vc animated:YES];
+}
+-(void)erweima{
+    [[BeforeScanSingleton shareScan] ShowSelectedType:AliPayStyle WithViewController:self];
 }
 -(NSArray*)cellArr{
     if (!_cellArr) {

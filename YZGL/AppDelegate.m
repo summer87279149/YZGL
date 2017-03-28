@@ -5,12 +5,16 @@
 //  Created by Admin on 17/2/27.
 //  Copyright © 2017年 Admin. All rights reserved.
 //
+#import "BaseNavViewController.h"
+#import "LoginAndRegistRequestManager.h"
+#import "UserLoginViewController.h"
 #import "HomeViewController.h"
 #import "RecordViewController.h"
 #import "SettingViewController.h"
 #import "HintViewController.h"
 #import "AppDelegate.h"
 #import "UITabBarController+extension.h"
+
 @interface AppDelegate ()
 
 @end
@@ -19,6 +23,22 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [self setRootVC];
+    [self judgeIsLogin];
+    
+    return YES;
+}
+
+
+
+
+
+
+
+
+
+
+-(void)setRootVC{
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     
@@ -33,11 +53,32 @@
     [tabBarVC addViewController:[[SettingViewController alloc]init] withImage:@"4.png" WithSelectImage:@"4.png" WithTitle:@"设置"];
     self.window.rootViewController=tabBarVC;
     [self.window makeKeyAndVisible];
-    
-    return YES;
 }
-
-
+-(void)judgeIsLogin{
+    if (![UserModel didLogin]) {
+        NSLog(@"打印token:%@",[UserModel userToken]);
+        [self reLogin];
+    }else{
+        //如果登入了就验证token
+        [LoginAndRegistRequestManager loginWithTokenSuccess:^(id response) {
+            NSString *code = response[@"code"];
+            NSString *message = response[@"message"];
+            if ([code intValue]!=1) {//如果token无效就重新登入
+                [MBProgressHUD showError:message];
+                 NSLog(@"token失效重新登入");
+                [self reLogin];
+            }
+        } error:^(id response) {
+            [MBProgressHUD showError:@"请检查网络"];
+        }];
+    }
+}
+-(void)reLogin{
+    UserLoginViewController*loginVc = [[UserLoginViewController alloc]init];
+    loginVc.title = @"登入";
+    BaseNavViewController *nav = [[BaseNavViewController alloc]initWithRootViewController:loginVc];
+    [self.window.rootViewController presentViewController:nav animated:NO completion:nil];
+}
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.

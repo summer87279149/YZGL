@@ -36,10 +36,18 @@
         image.myRightMargin = 15;
         image.myWidth = image.myHeight = 40;
         image.image = [UIImage imageNamed:@"QRCode"];
+        image.userInteractionEnabled = YES;
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(erweima)];
+        [image addGestureRecognizer:tap];
         [layout addSubview:image];
         [self setupUI];
     }
     return self;
+}
+-(void)erweima{
+    if (self.delegate) {
+        [self.delegate sendNext:nil];
+    }
 }
 -(void)setupUI{
     

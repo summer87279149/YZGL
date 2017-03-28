@@ -5,6 +5,8 @@
 //  Created by Admin on 17/2/27.
 //  Copyright © 2017年 Admin. All rights reserved.
 //
+#import "UserLoginViewController.h"
+#import "LoginAndRegistRequestManager.h"
 #import "StaffManageViewController.h"
 #import "SecuritySettingViewController.h"
 #import "QianZiCodeViewController.h"
@@ -76,10 +78,22 @@
     
     if ([cell.textLabel.text isEqualToString:@"安全设置"]) {
         SecuritySettingViewController*vc = [[SecuritySettingViewController alloc]init];
-        
         [self.navigationController pushViewController:vc animated:YES];
     }
     
+    if ([cell.textLabel.text isEqualToString:@"退出登入"]) {
+        @weakify(self)
+       [LoginAndRegistRequestManager logOutSuccess:^(id response) {
+           @strongify(self);
+           [[UserModel shareManager]logOut];
+           [MBProgressHUD showSuccess:@"已退出"];
+           UserLoginViewController*loginVc = [[UserLoginViewController alloc]init];
+           loginVc.title = @"登入";
+           [self.navigationController presentViewController:loginVc animated:YES completion:nil];
+       } error:^(id response) {
+           [MBProgressHUD showError:@"网络错误，退出失败"];
+       }];
+    }
     
     
     
@@ -144,8 +158,8 @@
         NSArray *arr = self.cellCompanyArr[indexPath.section];
         cell.textLabel.text = arr[indexPath.row];
         if (0 == indexPath.row && 0 == indexPath.section) {
-            UIButton*btn = [UIButton XT_createBtnWithTitle:@"修改" TitleColor:[UIColor redColor] TitleFont:nil cornerRadio:nil BGColor:nil Borderline:@1 BorderColor:[UIColor redColor] target:self Method:@selector(modifyName)];
-            btn.frame = CGRectMake(0, 5, 50, 30);
+            UIButton*btn = [UIButton XT_createBtnWithTitle:@"修改" TitleColor:[UIColor redColor] TitleFont:nil cornerRadio:@2 BGColor:nil Borderline:@1 BorderColor:[UIColor redColor] target:self Method:@selector(modifyName)];
+            btn.frame = CGRectMake(0, 5, 45, 25);
             cell.accessoryView = btn;
         }
         if (0 == indexPath.row && 1 == indexPath.section) {

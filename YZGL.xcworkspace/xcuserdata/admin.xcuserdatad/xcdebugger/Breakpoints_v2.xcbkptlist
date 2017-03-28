@@ -20,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YZGL/Class/Setting/SettingViewController.m"
-            timestampString = "510896390.637635"
+            timestampString = "512105583.398206"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -36,11 +36,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YZGL/Class/Setting/SettingViewController.m"
-            timestampString = "510896390.637635"
+            timestampString = "512105583.398206"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "202"
-            endingLineNumber = "202"
+            startingLineNumber = "217"
+            endingLineNumber = "217"
             landmarkName = "-switchBool"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,6 +58,22 @@
             startingLineNumber = "95"
             endingLineNumber = "95"
             landmarkName = "-completeClicked"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "YZGL/Class/ChooseDateCell.m"
+            timestampString = "512373530.182549"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "-chooseDateTap"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

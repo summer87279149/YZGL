@@ -5,6 +5,8 @@
 //  Created by Admin on 17/2/27.
 //  Copyright © 2017年 Admin. All rights reserved.
 //
+#import "UserTool.h"
+#import "LoginAndRegistRequestManager.h"
 #import "Login3ViewController.h"
 #import "Login2ViewController.h"
 #import "RegistViewController.h"
@@ -56,17 +58,13 @@
 }
 
 -(void)setupview1{
-   
     self.manager = [[RETableViewManager alloc] initWithTableView:self.tableview];
-    
-    
     RETableViewSection *section = [RETableViewSection sectionWithHeaderTitle:@"Test"];
     section.headerHeight = 0;
     self.section = section;
     [self.manager addSection:section];
     
-    
-    self.userName = [RETextItem itemWithTitle:@"用户名称:" value:@""];
+    self.userName = [RETextItem itemWithTitle:@"用户名:" value:@""];
     self.password = [RETextItem itemWithTitle:@"密码:" value:@""];
     self.password.secureTextEntry = YES;
     self.passwordVerify = [RETextItem itemWithTitle:@"确定密码:" value:@""];
@@ -87,8 +85,8 @@
     [section addItem:self.passwordVerify];
     [section addItem:self.phoneNum];
     [section addItem:self.vertifyCode];
-    [section addItem:self.hurryPhoneNum];
-    [section addItem:self.hurryVertifyCode];
+//    [section addItem:self.hurryPhoneNum];
+//    [section addItem:self.hurryVertifyCode];
 }
 -(UIButton*)createBtnWithTag:(NSInteger)tag{
     UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 50, 30)];
@@ -121,32 +119,84 @@
     }
 }
 - (IBAction)nextBtnClicked:(UIButton *)sender {
+   
+    @weakify(self)
     [self validateButtonPressed];
-    switch (self.switchBtn.selectedSegmentIndex) {
-        case 0:{
-        }
-            break;
-        case 1:{
-      
-        }
-            break;
-        default:
-            break;
+    if(![UserTool isValidateMobile:self.phoneNum.value]){
+        [MBProgressHUD showError:@"错误的手机号"];
+        return;
     }
-    
-    
+    if (![self.password.value isEqualToString:self.passwordVerify.value]) {
+        [MBProgressHUD showError:@"两次密码不相等"];
+        return;
+    }
+    SHOWHUD
+    [LoginAndRegistRequestManager registWith:self.userName.value password:self.password.value smsCode:self.vertifyCode.value tel:self.phoneNum.value type:self.switchBtn.selectedSegmentIndex companyName:self.companyName.value success:^(id response) {
+        @strongify(self)
+        HIDEHUD
+        NSLog(@"个人用户注册成功:%@",response);
+        NSString *code = response[@"code"];
+        NSString *message = response[@"message"];
+        if ([code intValue]==1) {
+            //成功注册
+            [MBProgressHUD showSuccess:message];
+            [self showAlertWithType:self.switchBtn.selectedSegmentIndex];
+        }else{
+            [MBProgressHUD showError:message];
+        }
+
+    } error:^(id response) {
+        HIDEHUD
+        [MBProgressHUD showError:@"请检查网络"];
+    }];
+    }
+-(void)showAlertWithType:(NSInteger)typeNum{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"是否前往实名认证" message:@"稍后也可以自行前往认证" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        [self popoverPresentationController];
+    }];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        typeNum==0?[self.navigationController pushViewController:[[Login3ViewController alloc]init] animated:YES]:[self.navigationController pushViewController:[[Login2ViewController alloc]init] animated:YES];
+    }];
+    [alertController addAction:cancelAction];
+    [alertController addAction:okAction];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
+
+
 -(void)setupview2{
     self.manager2 = [[RETableViewManager alloc] initWithTableView:self.tableview2];
     RETableViewSection *section = [RETableViewSection sectionWithHeaderTitle:@"Test"];
     section.headerHeight = 0;
     [self.manager addSection:section];
-
 }
 
 - (void)codeCountDown:(UIButton*)sender
 {
-    __block int timeout=30; //倒计时时间
+    if(![UserTool isValidateMobile:self.phoneNum.value]){
+        [MBProgressHUD showError:@"错误的手机号"];
+        return;
+    }
+    [self codeCountDownTimerWith:sender];
+//    WS(weakSelf)
+    [LoginAndRegistRequestManager sendVertifyCodeTel:self.phoneNum.value success:^(id response) {
+        NSString *code = response[@"code"];
+        NSString *message = response[@"message"];
+        if ([code intValue]==1) {
+            [MBProgressHUD showSuccess:message];
+        }else{
+            [MBProgressHUD showError:message];
+            return ;
+        }
+        
+    } error:^(id response) {
+        [MBProgressHUD showError:@"无网络"];
+    }];
+   
+}
+
+-(void)codeCountDownTimerWith:(UIButton*)sender{
+    __block int timeout=60; //倒计时时间
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_source_t _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0,queue);
     dispatch_source_set_timer(_timer,dispatch_walltime(NULL, 0),1.0*NSEC_PER_SEC, 0); //每秒执行
@@ -154,7 +204,6 @@
         if(timeout<=0){ //倒计时结束，关闭
             dispatch_source_cancel(_timer);
             dispatch_async(dispatch_get_main_queue(), ^{
-                
                 //设置界面的按钮显示 根据需求设置
                 [sender setTitle:@"重新发送" forState:UIControlStateNormal];
                 sender.enabled = YES;
@@ -165,15 +214,12 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 [sender setTitle:[NSString stringWithFormat:@"%@秒",strTime] forState:UIControlStateNormal];
                 sender.enabled = NO;
-                
             });
             timeout--;
         }
     });
     dispatch_resume(_timer);
 }
-
-
 
 
 

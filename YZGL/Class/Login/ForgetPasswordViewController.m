@@ -5,7 +5,8 @@
 //  Created by Admin on 17/3/7.
 //  Copyright © 2017年 Admin. All rights reserved.
 //
-
+#import "UserTool.h"
+#import "LoginAndRegistRequestManager.h"
 #import "ForgetPasswordViewController.h"
 
 @interface ForgetPasswordViewController ()
@@ -54,7 +55,21 @@
     
 }
 -(void)completeClicked{
-    
+    if (![self.passwordVerify.value isEqualToString:self.password.value]) {
+        [MBProgressHUD showError:@"两次密码不一致"];
+        return;
+    }
+    [LoginAndRegistRequestManager resetPasswordWith:self.phoneNum.value password:self.password.value smsCode:self.vertifyCode.value success:^(id response) {
+        NSLog(@"打印一下修改密码:%@",response);
+        NSString *code = response[@"code"];
+        NSString *message = response[@"message"];
+        [MBProgressHUD showSuccess:message];
+        if ([code intValue]==1) {
+            [self popoverPresentationController];
+        }
+    } error:^(id response) {
+        [MBProgressHUD showError:@"请检查网络"];
+    }];
 }
 
 -(UIButton*)createBtnWithTag:(NSInteger)tag{
@@ -78,9 +93,8 @@
 
 
 
-- (void)codeCountDown:(UIButton*)sender
-{
-    __block int timeout=30; //倒计时时间
+-(void)codeCountDownTimerWith:(UIButton*)sender{
+    __block int timeout=60; //倒计时时间
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_source_t _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0,queue);
     dispatch_source_set_timer(_timer,dispatch_walltime(NULL, 0),1.0*NSEC_PER_SEC, 0); //每秒执行
@@ -88,7 +102,6 @@
         if(timeout<=0){ //倒计时结束，关闭
             dispatch_source_cancel(_timer);
             dispatch_async(dispatch_get_main_queue(), ^{
-                
                 //设置界面的按钮显示 根据需求设置
                 [sender setTitle:@"重新发送" forState:UIControlStateNormal];
                 sender.enabled = YES;
@@ -99,12 +112,34 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 [sender setTitle:[NSString stringWithFormat:@"%@秒",strTime] forState:UIControlStateNormal];
                 sender.enabled = NO;
-                
             });
             timeout--;
         }
     });
     dispatch_resume(_timer);
+}
+
+
+- (void)codeCountDown:(UIButton*)sender
+{
+    if(![UserTool isValidateMobile:self.phoneNum.value]){
+        [MBProgressHUD showError:@"错误的手机号"];
+        return;
+    }
+    [self codeCountDownTimerWith:sender];
+    [LoginAndRegistRequestManager sendVertifyCodeTel:self.phoneNum.value success:^(id response) {
+        NSString *code = response[@"code"];
+        NSString *message = response[@"message"];
+        if ([code intValue]==1) {
+            [MBProgressHUD showSuccess:message];
+        }else{
+            [MBProgressHUD showError:message];
+            return ;
+        }
+        
+    } error:^(id response) {
+        [MBProgressHUD showError:@"无网络"];
+    }];
 }
 
 

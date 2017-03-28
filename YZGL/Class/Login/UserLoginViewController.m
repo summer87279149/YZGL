@@ -5,6 +5,8 @@
 //  Created by Admin on 17/3/7.
 //  Copyright © 2017年 Admin. All rights reserved.
 //
+#import "LoginAndRegistRequestManager.h"
+#import "UserTool.h"
 #import "RegistViewController.h"
 #import "ForgetPasswordViewController.h"
 #import "UserLoginViewController.h"
@@ -64,7 +66,33 @@
 }
 
 -(void)completeClicked{
-    
+    if([UserTool isValidateMobile:self.userName.value]){
+        @weakify(self);
+        [LoginAndRegistRequestManager loginWithPhoneNumber:self.userName.value password:self.passWord.value success:^(id response) {
+            @strongify(self);
+            NSString *code = response[@"code"];
+            NSString *message = response[@"message"];
+            switch ([code intValue]) {
+                case 1:{
+                    [UserModel shareManager].userToken = response[@"data"];
+                    [[UserModel shareManager] save];
+                    [[NSNotificationCenter defaultCenter]postNotificationName:DidLoginNotification object:nil];
+                    [self dismissViewControllerAnimated:YES completion:nil];
+                }
+                    break;
+                default:{
+                    [MBProgressHUD showError:message];
+                }
+                    break;
+            }
+            
+        } error:^(id response) {
+            [MBProgressHUD showError:@"请重试"];
+        }];
+    }else{
+        [MBProgressHUD showError:@"手机号格式错误"];
+        return;
+    }
 }
 
 

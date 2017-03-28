@@ -61,8 +61,6 @@ CGPoint beginPoint;
     //    self.transform =  // 移动当前view
     //    self.transform = CGAffineTransformTranslate(self.transform, offsetX, offsetY);
     
-    
-    
     self.center = CGPointMake(self.center.x + offsetX, self.center.y + offsetY);
     
     //x轴左右极限坐标

@@ -31,6 +31,10 @@
     [super viewWillAppear:animated];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveDidLoginNotification) name:DidLoginNotification object:nil];
+}
+-(void)receiveDidLoginNotification{
+    
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
@@ -48,13 +52,13 @@
     CGRect frame = firstResponder.frame;
     CGRect rectInVC = [firstResponder convertRect:frame toView:self.view];
     CGFloat finalYOffeset = rectInVC.origin.y+rectInVC.size.height;
-    NSLog(@"第一相应对象是:%@,frame是:%@",firstResponder,NSStringFromCGRect(rectInVC));
+//    NSLog(@"第一相应对象是:%@,frame是:%@",firstResponder,NSStringFromCGRect(rectInVC));
     CGFloat duration = [notification.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     NSDictionary *info = [notification userInfo];
     NSValue *value = [info objectForKey:UIKeyboardFrameEndUserInfoKey];
     keyboardRect = [value CGRectValue];
     distance = keyboardRect.origin.y - finalYOffeset;
-    NSLog(@"distance = keyboardRect.origin.y - finalYOffeset是\n %f = %f - %f",distance,keyboardRect.origin.y,finalYOffeset);
+//    NSLog(@"distance = keyboardRect.origin.y - finalYOffeset是\n %f = %f - %f",distance,keyboardRect.origin.y,finalYOffeset);
     if (distance<0) {
         [UIView animateWithDuration:duration animations:^{
             self.view.transform = CGAffineTransformMakeTranslation(0, -fabs(distance)-20);
@@ -64,7 +68,15 @@
     }
     
 }
-
+-(void)dealWithResponse:(id)response success:(void(^)())success{
+    NSString *code = response[@"code"];
+    NSString *message = response[@"message"];
+    if ([code intValue]==1) {
+        success();
+    }else{
+        [MBProgressHUD showError:message];
+    }
+}
 -(void)keyBoardWillHide:(NSNotification *)notification{
     CGFloat duration = [notification.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     if (isTransform) {
@@ -76,6 +88,7 @@
     }
     
 }
+
 - (void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }

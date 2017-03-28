@@ -44,6 +44,7 @@
         [self.navigationController pushViewController:[CheckRecordViewController new] animated:YES];
     }
 }
+
 -(void)addSeal{
     [self.navigationController pushViewController:[AddSealViewController new] animated:YES];
 }
@@ -70,9 +71,11 @@
     }
     return _tableview;
 }
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 165;
 }
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 5;
 }
@@ -82,7 +85,6 @@
     cell.shenQingShiYongClicked = [RACSubject subject];
     cell.piLiangShenQingClicked = [RACSubject subject];
     [cell.shenQingShiYongClicked subscribeNext:^(SealManagerCell*cell) {
-        
     }];
     [cell.piLiangShenQingClicked subscribeNext:^(SealManagerCell*cell) {
         
@@ -107,7 +109,6 @@
     NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:14.0f],
                                  NSForegroundColorAttributeName: [UIColor lightGrayColor],
                                  NSParagraphStyleAttributeName: paragraph};
-    
     return [[NSAttributedString alloc] initWithString:text attributes:attributes];
 }
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView{

@@ -20,7 +20,7 @@ typedef NS_ENUM(NSUInteger, NHResponseSeializerType) {
      *  JSON类型 如果使用这个响应解析器类型,那么请求返回的数据将会是JSON格式
      */
     NHResponseSeializerTypeJSON,
-    /*
+    /**
      *  XML类型 如果使用这个响应解析器类型,那么请求返回的数据将会是XML格式
      */
     NHResponseSeializerTypeXML,
@@ -28,7 +28,7 @@ typedef NS_ENUM(NSUInteger, NHResponseSeializerType) {
      *  Plist类型 如果使用这个响应解析器类型,那么请求返回的数据将会是Plist格式
      */
     NHResponseSeializerTypePlist,
-    /*
+    /**
      *  Compound类型 如果使用这个响应解析器类型,那么请求返回的数据将会是Compound格式
      */
     NHResponseSeializerTypeCompound,
