@@ -26,7 +26,7 @@
     
     // 1秒之后再消失
 //    [hud hide:YES afterDelay:1.5];
-    [hud hideAnimated:YES afterDelay:1];
+    [hud hideAnimated:YES afterDelay:0.8];
 }
 
 #pragma mark 显示错误信息

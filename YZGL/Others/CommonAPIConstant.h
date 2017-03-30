@@ -10,4 +10,6 @@
 
 @interface CommonAPIConstant : NSObject
 UIKIT_EXTERN NSString *const DidLoginNotification;
+UIKIT_EXTERN NSString *const UserInfoChangedNotification;
+UIKIT_EXTERN NSString *const OtherAddressLogin;
 @end

@@ -15,31 +15,54 @@
 #define USER_TOKEN                          @"ud_user_token"
 @interface UserModel : NSObject
 
-//用户名
-@property (strong, nonatomic) NSString *userName;
-
+//假名字
+@property (copy, nonatomic) NSString *userName;
+//真实名字
+@property (nonatomic, copy) NSString *truename;
 //密码
-@property (strong, nonatomic) NSString *password;
+@property (copy, nonatomic) NSString *password;
 
 //用户id
-@property (strong, nonatomic) NSString *userId;
+@property (copy, nonatomic) NSString *userId;
 
 //用户token
-@property (strong, nonatomic) NSString *userToken;
+@property (copy, nonatomic) NSString *userToken;
 
 //手机号
-@property (strong, nonatomic) NSString *phoneNumber;
+@property (copy, nonatomic) NSString *phoneNumber;
 
-//个人or公司  @“0”，@“1”
+//个人or公司  @“1”，@“2”
 @property (strong, nonatomic) NSString *personalOrCompany;
+
+//comID 单位id
+@property (nonatomic, copy) NSString *comId;
+//com 单位
+@property (nonatomic, copy) NSDictionary *com;
+//headimg
+@property (nonatomic, copy) NSString *headimg;
+
+//idcard
+@property (nonatomic, copy) NSString *idcard;
+//pass
+@property (nonatomic, copy) NSString *pass;
+//post
+@property (nonatomic, copy) NSString *post;
+//role
+@property (nonatomic, copy) NSString *role;
+
+//tel
+@property (nonatomic, copy) NSString *tel;
+
+//comList
+@property (nonatomic, copy) NSArray *comList;
 
 +(instancetype)shareManager;
 
 - (void)save;
 
-+ (NSString *)username;
+//+ (NSString *)username;
 
-+ (NSString *)phoneNumber;
+//+ (NSString *)phoneNumber;
 
 + (NSString *)password;
 

@@ -44,7 +44,7 @@
     if (selec) {
         [btn addTarget:tar action:selec forControlEvents:UIControlEventTouchUpInside];
     }
-    
+    btn.showsTouchWhenHighlighted = YES;
     return btn;
 }
 +(UIButton *)XT_creteBtnWithTitle:(NSString *)title TitleColor:(UIColor*)titleColor cornerRadio:(NSNumber *)radio{

@@ -6,7 +6,7 @@
 //  Copyright © 2017年 Admin. All rights reserved.
 //
 #import "UserLoginViewController.h"
-#import "LoginAndRegistRequestManager.h"
+#import "RequestManager.h"
 #import "StaffManageViewController.h"
 #import "SecuritySettingViewController.h"
 #import "QianZiCodeViewController.h"
@@ -83,7 +83,7 @@
     
     if ([cell.textLabel.text isEqualToString:@"退出登入"]) {
         @weakify(self)
-       [LoginAndRegistRequestManager logOutSuccess:^(id response) {
+       [RequestManager logOutSuccess:^(id response) {
            @strongify(self);
            [[UserModel shareManager]logOut];
            [MBProgressHUD showSuccess:@"已退出"];

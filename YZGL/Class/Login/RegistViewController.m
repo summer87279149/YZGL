@@ -6,7 +6,7 @@
 //  Copyright © 2017年 Admin. All rights reserved.
 //
 #import "UserTool.h"
-#import "LoginAndRegistRequestManager.h"
+#import "RequestManager.h"
 #import "Login3ViewController.h"
 #import "Login2ViewController.h"
 #import "RegistViewController.h"
@@ -131,7 +131,7 @@
         return;
     }
     SHOWHUD
-    [LoginAndRegistRequestManager registWith:self.userName.value password:self.password.value smsCode:self.vertifyCode.value tel:self.phoneNum.value type:self.switchBtn.selectedSegmentIndex companyName:self.companyName.value success:^(id response) {
+    [RequestManager registWith:self.userName.value password:self.password.value smsCode:self.vertifyCode.value tel:self.phoneNum.value type:self.switchBtn.selectedSegmentIndex companyName:self.companyName.value success:^(id response) {
         @strongify(self)
         HIDEHUD
         NSLog(@"个人用户注册成功:%@",response);
@@ -156,7 +156,7 @@
         [self popoverPresentationController];
     }];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        typeNum==0?[self.navigationController pushViewController:[[Login3ViewController alloc]init] animated:YES]:[self.navigationController pushViewController:[[Login2ViewController alloc]init] animated:YES];
+        typeNum==0?[self.navigationController pushViewController:[[Login3ViewController alloc]init] animated:YES]:[self.navigationController pushViewController:[[Login2ViewController alloc]initSourceType:SourceTypeRegister] animated:YES];
     }];
     [alertController addAction:cancelAction];
     [alertController addAction:okAction];
@@ -179,7 +179,7 @@
     }
     [self codeCountDownTimerWith:sender];
 //    WS(weakSelf)
-    [LoginAndRegistRequestManager sendVertifyCodeTel:self.phoneNum.value success:^(id response) {
+    [RequestManager sendVertifyCodeTel:self.phoneNum.value success:^(id response) {
         NSString *code = response[@"code"];
         NSString *message = response[@"message"];
         if ([code intValue]==1) {

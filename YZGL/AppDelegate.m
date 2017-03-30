@@ -6,7 +6,7 @@
 //  Copyright © 2017年 Admin. All rights reserved.
 //
 #import "BaseNavViewController.h"
-#import "LoginAndRegistRequestManager.h"
+#import "RequestManager.h"
 #import "UserLoginViewController.h"
 #import "HomeViewController.h"
 #import "RecordViewController.h"
@@ -53,6 +53,7 @@
     [tabBarVC addViewController:[[SettingViewController alloc]init] withImage:@"4.png" WithSelectImage:@"4.png" WithTitle:@"设置"];
     self.window.rootViewController=tabBarVC;
     [self.window makeKeyAndVisible];
+    
 }
 -(void)judgeIsLogin{
     if (![UserModel didLogin]) {
@@ -60,13 +61,16 @@
         [self reLogin];
     }else{
         //如果登入了就验证token
-        [LoginAndRegistRequestManager loginWithTokenSuccess:^(id response) {
+        [MBProgressHUD showHUDAddedTo:self.window.rootViewController.view animated:YES];
+        [RequestManager loginWithTokenSuccess:^(id response) {
+            [MBProgressHUD hideHUDForView:self.window.rootViewController.view animated:YES];
+            NSLog(@"appdelegate 返回%@",response);
             NSString *code = response[@"code"];
             NSString *message = response[@"message"];
             if ([code intValue]!=1) {//如果token无效就重新登入
-                [MBProgressHUD showError:message];
-                 NSLog(@"token失效重新登入");
-                [self reLogin];
+//                [MBProgressHUD showError:message];
+//                 NSLog(@"token失效重新登入");
+//                [self reLogin];
             }
         } error:^(id response) {
             [MBProgressHUD showError:@"请检查网络"];

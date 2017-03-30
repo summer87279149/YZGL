@@ -1,14 +1,14 @@
 //
-//  LoginAndRegistRequestManager.h
+//  RequestManager.h
 //  YZGL
 //
-//  Created by Admin on 17/3/16.
+//  Created by Admin on 17/3/30.
 //  Copyright © 2017年 Admin. All rights reserved.
 //
 
 #import "BaseRequestManager.h"
 
-@interface LoginAndRegistRequestManager : BaseRequestManager
+@interface RequestManager : BaseRequestManager
 
 /**
  *  登入
@@ -22,7 +22,7 @@
 
 /**
  token登入
-
+ 
  @param xt_success xt_success description
  @param xt_error xt_error description
  */
@@ -30,7 +30,7 @@
 
 /**
  注册
-
+ 
  @param psw 密码
  @param code 验证码
  @param tel 手机号
@@ -53,7 +53,7 @@
 
 /**
  退出登入
-
+ 
  @param xt_success xt_success description
  @param xt_error xt_error description
  */
@@ -61,26 +61,54 @@
 
 /**
  发送验证码
-
+ 
  @param phoneNumber phoneNumber description
  */
 +(void)sendVertifyCodeTel:(NSString *)phoneNumber success:(Success)xt_success error:(Error)xt_error;
 
 /**
  公司认证
-
+ 
  @param para <#para description#>
  @param xt_success <#xt_success description#>
  @param xt_error <#xt_error description#>
  */
-+(void)companyAuthWithPara:(NSDictionary*)para success:(Success)xt_success error:(Error)xt_error;
-
++(void)companyAuthWithPara:(NSDictionary*)para scanImage:(UIImage *)image1 companyImage:(UIImage *)image2 success:(Success)xt_success error:(Error)xt_error;
 /**
  个人认证
-
+ 
  @param para <#para description#>
  @param xt_success <#xt_success description#>
  @param xt_error <#xt_error description#>
  */
 +(void)personalAuthWithPara:(NSDictionary*)para success:(Success)xt_success error:(Error)xt_error;
+
+/**
+ 个人资料
+ 
+ @param xt_success <#xt_success description#>
+ @param xt_error <#xt_error description#>
+ */
++(void)queryUserInfoSuccess:(Success)xt_success error:(Error)xt_error;
+
+/**
+ 主页面信息
+ 
+ @param xt_success <#xt_success description#>
+ @param xt_error <#xt_error description#>
+ */
++(void)queryHomeUserInfoSuccess:(Success)xt_success error:(Error)xt_error;
+
+/**
+ 切换单位
+
+ @param comID <#comID description#>
+ @param xt_success <#xt_success description#>
+ @param xt_error <#xt_error description#>
+ */
++(void)switchCompanycomID:(NSString*)comID success:(Success)xt_success error:(Error)xt_error;
+
+//修改头像
++(void)changePortrait:(UIImage*)image Success:(Success)xt_success error:(Error)xt_error;
+
 @end

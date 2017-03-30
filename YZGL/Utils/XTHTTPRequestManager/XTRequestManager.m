@@ -45,7 +45,11 @@ responseSeializerType:(NHResponseSeializerType)type
     [manager GET:URLString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         // 成功
         if (success) {
+            if ([responseObject[@"code"]intValue]==1099) {
+                [[NSNotificationCenter defaultCenter]postNotificationName:OtherAddressLogin object:nil];
+            }
             success(responseObject);
+//            NSLog(@"原理种打印一下:%@",responseObject);
         }
         //        NSLog(@"%@", responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -83,7 +87,10 @@ responseSeializerType:(NHResponseSeializerType)type
     
     [manager POST:URLString parameters:parameters progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         if (success) {
-            success(responseObject);
+            if ([responseObject[@"code"]intValue]==1099) {
+                [[NSNotificationCenter defaultCenter]postNotificationName:OtherAddressLogin object:nil];
+            }
+              success(responseObject);
         }
         NSLog(@"%@", responseObject);
         
@@ -126,6 +133,9 @@ constructingBodyWithBlock:(void (^)(id<AFMultipartFormData>))block
         
         NSLog(@"%@", responseObject);
         if (success) {
+            if ([responseObject[@"code"]intValue]==1099) {
+                [[NSNotificationCenter defaultCenter]postNotificationName:OtherAddressLogin object:nil];
+            }
             success(responseObject);
         }
         

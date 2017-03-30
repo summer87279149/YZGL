@@ -9,5 +9,5 @@
 #import "BaseViewController.h"
 
 @interface UserLoginViewController : BaseViewController
-
+-(void)showMessage;
 @end

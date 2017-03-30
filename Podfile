@@ -17,5 +17,6 @@ pod 'DZNEmptyDataSet'
 pod 'RETableViewManager', '~> 1.6'
 pod 'WMPageController'
 pod 'DXPopover'
+pod 'SDCycleScrollView'
 
 end

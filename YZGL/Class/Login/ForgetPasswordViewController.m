@@ -6,7 +6,7 @@
 //  Copyright © 2017年 Admin. All rights reserved.
 //
 #import "UserTool.h"
-#import "LoginAndRegistRequestManager.h"
+#import "RequestManager.h"
 #import "ForgetPasswordViewController.h"
 
 @interface ForgetPasswordViewController ()
@@ -59,7 +59,7 @@
         [MBProgressHUD showError:@"两次密码不一致"];
         return;
     }
-    [LoginAndRegistRequestManager resetPasswordWith:self.phoneNum.value password:self.password.value smsCode:self.vertifyCode.value success:^(id response) {
+    [RequestManager resetPasswordWith:self.phoneNum.value password:self.password.value smsCode:self.vertifyCode.value success:^(id response) {
         NSLog(@"打印一下修改密码:%@",response);
         NSString *code = response[@"code"];
         NSString *message = response[@"message"];
@@ -127,7 +127,7 @@
         return;
     }
     [self codeCountDownTimerWith:sender];
-    [LoginAndRegistRequestManager sendVertifyCodeTel:self.phoneNum.value success:^(id response) {
+    [RequestManager sendVertifyCodeTel:self.phoneNum.value success:^(id response) {
         NSString *code = response[@"code"];
         NSString *message = response[@"message"];
         if ([code intValue]==1) {

@@ -5,7 +5,8 @@
 //  Created by Admin on 17/3/7.
 //  Copyright © 2017年 Admin. All rights reserved.
 //
-#import "LoginAndRegistRequestManager.h"
+#import "NSNotificationCenter+JKMainThread.h"
+#import "RequestManager.h"
 #import "UserTool.h"
 #import "RegistViewController.h"
 #import "ForgetPasswordViewController.h"
@@ -31,6 +32,7 @@
     
     self.userName = [RETextItem itemWithTitle:@"帐号" value:nil placeholder:@"请输入帐号"];
     self.passWord = [RETextItem itemWithTitle:@"密码" value:nil placeholder:@"请输入密码"];
+    self.passWord.secureTextEntry = YES;
     
     [section addItem:self.userName];
     [section addItem:self.passWord];
@@ -64,19 +66,27 @@
 -(void)forgetPasswordBtnClicked{
     [self.navigationController pushViewController:[ForgetPasswordViewController new] animated:YES];
 }
-
+-(void)showMessage{
+    [MBProgressHUD showError:@"登入已失效，请重新登入"];
+}
 -(void)completeClicked{
     if([UserTool isValidateMobile:self.userName.value]){
         @weakify(self);
-        [LoginAndRegistRequestManager loginWithPhoneNumber:self.userName.value password:self.passWord.value success:^(id response) {
+        SHOWHUD
+        [RequestManager loginWithPhoneNumber:self.userName.value password:self.passWord.value success:^(id response) {
+            HIDEHUD
             @strongify(self);
+            NSLog(@"登入成功返回的是:%@",response);
             NSString *code = response[@"code"];
             NSString *message = response[@"message"];
             switch ([code intValue]) {
                 case 1:{
                     [UserModel shareManager].userToken = response[@"data"];
                     [[UserModel shareManager] save];
-                    [[NSNotificationCenter defaultCenter]postNotificationName:DidLoginNotification object:nil];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [[NSNotificationCenter defaultCenter]postNotificationName:DidLoginNotification object:@{@"userToken":response[@"data"]}];
+                        
+                    });
                     [self dismissViewControllerAnimated:YES completion:nil];
                 }
                     break;

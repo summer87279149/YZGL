@@ -10,4 +10,5 @@
 
 @interface PersonalDataViewController : BaseViewController
 @property (nonatomic, strong) NSArray *cellArr;
+@property (nonatomic, strong) RACSubject *callBack;
 @end

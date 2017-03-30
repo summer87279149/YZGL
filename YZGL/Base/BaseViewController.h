@@ -16,5 +16,5 @@
 
  @param response response description
  */
--(void)dealWithResponse:(id)response;
+//-(void)dealWithResponse:(id)response;
 @end

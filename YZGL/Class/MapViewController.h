@@ -9,5 +9,7 @@
 #import "BaseViewController.h"
 
 @interface MapViewController : BaseViewController
-
+@property (nonatomic, copy) NSString *address;
+@property (nonatomic, strong) RACSubject *delegate;
+- (instancetype)initWithAddress:(NSString *)addStr;
 @end

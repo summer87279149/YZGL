@@ -33,6 +33,8 @@ PODS:
     - REFormattedNumberField (~> 1.1.5)
     - REValidation (~> 0.1.4)
   - REValidation (0.1.4)
+  - SDCycleScrollView (1.65):
+    - SDWebImage (~> 3.7)
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage-Category (1.4):
@@ -51,6 +53,7 @@ DEPENDENCIES:
   - MyLayout
   - ReactiveCocoa (= 2.5)
   - RETableViewManager (~> 1.6)
+  - SDCycleScrollView
   - SDWebImage-Category (~> 1.4)
   - WMPageController
 
@@ -67,10 +70,11 @@ SPEC CHECKSUMS:
   REFormattedNumberField: 70fc5fb1218ebd5ee9983820defd12806d5c6ec6
   RETableViewManager: 0f24d796c42c0890d38c79cc9aeb3871e186726e
   REValidation: 38c4de1be58455f8b00aab208ac80db316a66b7f
+  SDCycleScrollView: f72904c77698a7f93a41bcbbc2d78b073bf7326c
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SDWebImage-Category: 1f1c00880a538f7faf5b726e1559cf1ca555c553
   WMPageController: 2267f3b40620eb0a74abb19ee2a46ce1d7c61754
 
-PODFILE CHECKSUM: 914db20e1609b26e622e060225328fd7ff04ea05
+PODFILE CHECKSUM: 36b229c092ccb5921bb10b2fb61c33d9b24a01ae
 
 COCOAPODS: 1.2.0.beta.1

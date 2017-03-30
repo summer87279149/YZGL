@@ -10,4 +10,6 @@
 
 @implementation CommonAPIConstant
 NSString *const DidLoginNotification = @"DidLoginNotification";
+NSString *const UserInfoChangedNotification = @"UserInfoChangedNotification";
+NSString *const OtherAddressLogin = @"OtherAddressLogin";
 @end
