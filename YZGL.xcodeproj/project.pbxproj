@@ -371,6 +371,13 @@
 		840F08991E65659500961F26 /* UserTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F08931E65659500961F26 /* UserTool.m */; };
 		840F089A1E65659500961F26 /* UIColor+extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F08941E65659500961F26 /* UIColor+extend.m */; };
 		840F08A01E656EC800961F26 /* UIViewController+CameraAndPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F089F1E656EC800961F26 /* UIViewController+CameraAndPhoto.m */; };
+		840F1FD31E8DE0570038D09B /* PerSonalViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F1FD21E8DE0570038D09B /* PerSonalViewModel.m */; };
+		840F1FD71E8DE7CF0038D09B /* PersonalNoAuthCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F1FD51E8DE7CF0038D09B /* PersonalNoAuthCell.m */; };
+		840F1FD81E8DE7CF0038D09B /* PersonalNoAuthCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840F1FD61E8DE7CF0038D09B /* PersonalNoAuthCell.xib */; };
+		840F1FDC1E8DF1310038D09B /* PersonalAlreadyAuthCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F1FDA1E8DF1310038D09B /* PersonalAlreadyAuthCell.m */; };
+		840F1FDD1E8DF1310038D09B /* PersonalAlreadyAuthCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840F1FDB1E8DF1310038D09B /* PersonalAlreadyAuthCell.xib */; };
+		840F1FE11E8DF5580038D09B /* CompanyNoAuthCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F1FDF1E8DF5580038D09B /* CompanyNoAuthCell.m */; };
+		840F1FE21E8DF5580038D09B /* CompanyNoAuthCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840F1FE01E8DF5580038D09B /* CompanyNoAuthCell.xib */; };
 		840F3E061E691C6200B79076 /* StaffManageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F3E041E691C6200B79076 /* StaffManageTableViewCell.m */; };
 		840F3E071E691C6200B79076 /* StaffManageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840F3E051E691C6200B79076 /* StaffManageTableViewCell.xib */; };
 		840F3E091E691F1200B79076 /* CompanManager.png in Resources */ = {isa = PBXBuildFile; fileRef = 840F3E081E691F1200B79076 /* CompanManager.png */; };
@@ -1368,6 +1375,17 @@
 		840F08971E65659500961F26 /* UIColor+extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+extend.h"; sourceTree = "<group>"; };
 		840F089E1E656EC800961F26 /* UIViewController+CameraAndPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+CameraAndPhoto.h"; sourceTree = "<group>"; };
 		840F089F1E656EC800961F26 /* UIViewController+CameraAndPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+CameraAndPhoto.m"; sourceTree = "<group>"; };
+		840F1FD11E8DE0570038D09B /* PerSonalViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PerSonalViewModel.h; sourceTree = "<group>"; };
+		840F1FD21E8DE0570038D09B /* PerSonalViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PerSonalViewModel.m; sourceTree = "<group>"; };
+		840F1FD41E8DE7CF0038D09B /* PersonalNoAuthCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalNoAuthCell.h; sourceTree = "<group>"; };
+		840F1FD51E8DE7CF0038D09B /* PersonalNoAuthCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalNoAuthCell.m; sourceTree = "<group>"; };
+		840F1FD61E8DE7CF0038D09B /* PersonalNoAuthCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonalNoAuthCell.xib; sourceTree = "<group>"; };
+		840F1FD91E8DF1310038D09B /* PersonalAlreadyAuthCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalAlreadyAuthCell.h; sourceTree = "<group>"; };
+		840F1FDA1E8DF1310038D09B /* PersonalAlreadyAuthCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalAlreadyAuthCell.m; sourceTree = "<group>"; };
+		840F1FDB1E8DF1310038D09B /* PersonalAlreadyAuthCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonalAlreadyAuthCell.xib; sourceTree = "<group>"; };
+		840F1FDE1E8DF5580038D09B /* CompanyNoAuthCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyNoAuthCell.h; sourceTree = "<group>"; };
+		840F1FDF1E8DF5580038D09B /* CompanyNoAuthCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyNoAuthCell.m; sourceTree = "<group>"; };
+		840F1FE01E8DF5580038D09B /* CompanyNoAuthCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CompanyNoAuthCell.xib; sourceTree = "<group>"; };
 		840F3E031E691C6200B79076 /* StaffManageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaffManageTableViewCell.h; sourceTree = "<group>"; };
 		840F3E041E691C6200B79076 /* StaffManageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaffManageTableViewCell.m; sourceTree = "<group>"; };
 		840F3E051E691C6200B79076 /* StaffManageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StaffManageTableViewCell.xib; sourceTree = "<group>"; };
@@ -3494,6 +3512,7 @@
 				841A192D1E666FA900D3540B /* M */,
 				841A192C1E666FA300D3540B /* C */,
 				840DF4B51E63CC33002A7E9C /* V */,
+				840F1FCF1E8DE01A0038D09B /* VM */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -3537,9 +3556,18 @@
 			children = (
 				840DF4B61E63CC4C002A7E9C /* SearchView.h */,
 				840DF4B71E63CC4C002A7E9C /* SearchView.m */,
+				840F1FDE1E8DF5580038D09B /* CompanyNoAuthCell.h */,
+				840F1FDF1E8DF5580038D09B /* CompanyNoAuthCell.m */,
+				840F1FE01E8DF5580038D09B /* CompanyNoAuthCell.xib */,
 				840D85A71E8C9BA70022B729 /* PersonaDIYCell.h */,
 				840D85A81E8C9BA70022B729 /* PersonaDIYCell.m */,
 				840D85A91E8C9BA70022B729 /* PersonaDIYCell.xib */,
+				840F1FD91E8DF1310038D09B /* PersonalAlreadyAuthCell.h */,
+				840F1FDA1E8DF1310038D09B /* PersonalAlreadyAuthCell.m */,
+				840F1FDB1E8DF1310038D09B /* PersonalAlreadyAuthCell.xib */,
+				840F1FD41E8DE7CF0038D09B /* PersonalNoAuthCell.h */,
+				840F1FD51E8DE7CF0038D09B /* PersonalNoAuthCell.m */,
+				840F1FD61E8DE7CF0038D09B /* PersonalNoAuthCell.xib */,
 			);
 			name = V;
 			sourceTree = "<group>";
@@ -3622,6 +3650,15 @@
 				840F08851E65417B00961F26 /* MBProgressHUD.bundle */,
 			);
 			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		840F1FCF1E8DE01A0038D09B /* VM */ = {
+			isa = PBXGroup;
+			children = (
+				840F1FD11E8DE0570038D09B /* PerSonalViewModel.h */,
+				840F1FD21E8DE0570038D09B /* PerSonalViewModel.m */,
+			);
+			name = VM;
 			sourceTree = "<group>";
 		};
 		840F3E001E691C3500B79076 /* C */ = {
@@ -4848,6 +4885,7 @@
 			files = (
 				840D85A11E8C9A9B0022B729 /* 11.png in Resources */,
 				8444AD8F1E6EA9680087B2B5 /* toast_vol_2@2x.png in Resources */,
+				840F1FE21E8DF5580038D09B /* CompanyNoAuthCell.xib in Resources */,
 				840DF4B11E63BE12002A7E9C /* 2.png in Resources */,
 				8444AD511E6E9BDB0087B2B5 /* ForgetPasswordViewController.xib in Resources */,
 				8444AD8D1E6EA9680087B2B5 /* toast_timeshort@2x.png in Resources */,
@@ -4858,6 +4896,7 @@
 				840DF17B1E63B03A002A7E9C /* Assets.xcassets in Resources */,
 				840DF4B31E63BE12002A7E9C /* 4.png in Resources */,
 				8405224B1E6D08C10071D732 /* ElectronicalRealViewCell.xib in Resources */,
+				840F1FDD1E8DF1310038D09B /* PersonalAlreadyAuthCell.xib in Resources */,
 				840C2A761E7137BA001EA340 /* draw_rubber@2x.png in Resources */,
 				840DF4B21E63BE12002A7E9C /* 3.png in Resources */,
 				840D85AB1E8C9BA70022B729 /* PersonaDIYCell.xib in Resources */,
@@ -4872,6 +4911,7 @@
 				840DF4DD1E6415A0002A7E9C /* loginBG.png in Resources */,
 				840522611E6D372E0071D732 /* camera.png in Resources */,
 				840F087E1E65248100961F26 /* city.plist in Resources */,
+				840F1FD81E8DE7CF0038D09B /* PersonalNoAuthCell.xib in Resources */,
 				8444AD921E6EA9680087B2B5 /* toast_vol_5@2x.png in Resources */,
 				840C2A791E7137BA001EA340 /* draw_width_2_s@2x.png in Resources */,
 				8444AD8C1E6EA9680087B2B5 /* toast_microphone@2x.png in Resources */,
@@ -5107,6 +5147,7 @@
 				840523201E6D56160071D732 /* MatterListItemViewController.m in Sources */,
 				8435083C1E86408C0003B22C /* ZXDefaultGridSampler.m in Sources */,
 				840DF3C11E63B1AD002A7E9C /* NSString+JKRemoveEmoji.m in Sources */,
+				840F1FD71E8DE7CF0038D09B /* PersonalNoAuthCell.m in Sources */,
 				840DF3D01E63B1AD002A7E9C /* NSURLSession+JKSynchronousTask.m in Sources */,
 				8435086C1E86408C0003B22C /* ZXAI013103decoder.m in Sources */,
 				8435084E1E86408C0003B22C /* ZXResult.m in Sources */,
@@ -5134,6 +5175,7 @@
 				840DF4741E63B1B3002A7E9C /* REFrostedContainerViewController.m in Sources */,
 				843508151E86408C0003B22C /* ZXISBNParsedResult.m in Sources */,
 				840A7D581E68035A00C86C61 /* SafePasswordViewController.m in Sources */,
+				840F1FDC1E8DF1310038D09B /* PersonalAlreadyAuthCell.m in Sources */,
 				843508621E86408C0003B22C /* ZXDataMatrixX12Encoder.m in Sources */,
 				840DF3FA1E63B1AD002A7E9C /* UIFont+JKTTF.m in Sources */,
 				840DF3A71E63B1AD002A7E9C /* NSNumber+JKRomanNumerals.m in Sources */,
@@ -5142,6 +5184,7 @@
 				840DF41B1E63B1AD002A7E9C /* UIPopoverController+iPhone.m in Sources */,
 				84291CB01E8B87DF002ACF84 /* CompanyModel.m in Sources */,
 				843508791E86408C0003B22C /* ZXRSSExpandedDecodedInformation.m in Sources */,
+				840F1FD31E8DE0570038D09B /* PerSonalViewModel.m in Sources */,
 				840DF3BA1E63B1AD002A7E9C /* NSString+JKEncrypt.m in Sources */,
 				840F088E1E655B9D00961F26 /* Login3ViewController.m in Sources */,
 				8435081B1E86408C0003B22C /* ZXSMSMMSResultParser.m in Sources */,
@@ -5200,6 +5243,7 @@
 				843508661E86408C0003B22C /* ZXMaxiCodeDecodedBitStreamParser.m in Sources */,
 				843508A71E86408C0003B22C /* ZXPDF417BoundingBox.m in Sources */,
 				843507F41E86408C0003B22C /* LBXScanViewController.m in Sources */,
+				840F1FE11E8DF5580038D09B /* CompanyNoAuthCell.m in Sources */,
 				840DF3941E63B1AD002A7E9C /* NSDate+JKZeroDate.m in Sources */,
 				840DF3DA1E63B1AD002A7E9C /* CATransaction+JKAnimateWithDuration.m in Sources */,
 				8435087B1E86408C0003B22C /* ZXRSSExpandedDecodedObject.m in Sources */,

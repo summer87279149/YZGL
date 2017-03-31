@@ -67,21 +67,60 @@
 +(void)sendVertifyCodeTel:(NSString *)phoneNumber success:(Success)xt_success error:(Error)xt_error;
 
 /**
- 公司认证
+ 判断营业执照能不能用
+
+ @param type <#type description#>
+ @param value <#value description#>
+ @param xt_success <#xt_success description#>
+ @param xt_error <#xt_error description#>
+ */
++(void)judgeBusinesslLicenseIsUsed:(SourceType)type license:(NSString *)value success:(Success)xt_success error:(Error)xt_error;
+
+/**
+ 公司认证（信息上传前需要认证）
+
+ @param type <#type description#>
+ @param value 营业执照号码
+ */
++(void)companyFormAuth:(SourceType)type license:(NSString *)value success:(Success)xt_success error:(Error)xt_error;
+/**
+ 公司认证信息上传
  
  @param para <#para description#>
  @param xt_success <#xt_success description#>
  @param xt_error <#xt_error description#>
  */
 +(void)companyAuthWithPara:(NSDictionary*)para scanImage:(UIImage *)image1 companyImage:(UIImage *)image2 success:(Success)xt_success error:(Error)xt_error;
+
 /**
- 个人认证
- 
- @param para <#para description#>
+ 判断身份证是否被使用
+
+ @param type <#type description#>
+ @param value <#value description#>
  @param xt_success <#xt_success description#>
  @param xt_error <#xt_error description#>
  */
-+(void)personalAuthWithPara:(NSDictionary*)para success:(Success)xt_success error:(Error)xt_error;
++(void)judgeIDCardIsUsed:(SourceType)type license:(NSString *)value success:(Success)xt_success error:(Error)xt_error;
+
+/**
+  个人认证（信息上传前需要认证）
+
+ @param type <#type description#>
+ @param value 身份证号码
+ @param xt_success <#xt_success description#>
+ @param xt_error <#xt_error description#>
+ */
++(void)personalFormAuth:(SourceType)type name:(NSString*)name idcard:(NSString *)value success:(Success)xt_success error:(Error)xt_error;
+/**
+  个人认证信息上传
+ @param para <#para description#>
+ @param img1 <#img1 description#>
+ @param img2 <#img2 description#>
+ @param img3 <#img3 description#>
+ @param xt_success <#xt_success description#>
+ @param xt_error <#xt_error description#>
+ */
++(void)personalAuthWithPara:(NSDictionary*)para frontImg:(UIImage*)img1 backImg:(UIImage *)img2 holdImg:(UIImage*)img3 success:(Success)xt_success error:(Error)xt_error;
 
 /**
  个人资料

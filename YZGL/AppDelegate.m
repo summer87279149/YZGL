@@ -56,6 +56,7 @@
     
 }
 -(void)judgeIsLogin{
+    
     if (![UserModel didLogin]) {
         NSLog(@"打印token:%@",[UserModel userToken]);
         [self reLogin];

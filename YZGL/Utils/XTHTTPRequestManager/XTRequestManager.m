@@ -7,7 +7,7 @@
 //
 
 #import "XTRequestManager.h"
-
+static int XTNetworkStatus = AFNetworkReachabilityStatusReachableViaWiFi;
 @interface AFHTTPSessionManager (Shared)
 // 设置为单利
 + (instancetype)sharedManager;
@@ -20,6 +20,32 @@
     dispatch_once(&onceToken, ^{
         _instance = [AFHTTPSessionManager manager];
         _instance.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/plain", @"text/json", @"text/javascript", @"text/html", nil];
+        // 监听网络状况
+        AFNetworkReachabilityManager *mgr = [AFNetworkReachabilityManager sharedManager];
+        [mgr setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+            switch (status) {
+                case AFNetworkReachabilityStatusUnknown:
+                    XTNetworkStatus = AFNetworkReachabilityStatusUnknown;
+                    [[NSNotificationCenter defaultCenter]postNotificationName:NetWorkStatusChanged object:nil userInfo:@{@"status":@"0"}];
+                    break;
+                case AFNetworkReachabilityStatusNotReachable:
+                    XTNetworkStatus = AFNetworkReachabilityStatusNotReachable;
+                    [[NSNotificationCenter defaultCenter]postNotificationName:NetWorkStatusChanged object:nil userInfo:@{@"status":@"1"}];
+                    break;
+                case AFNetworkReachabilityStatusReachableViaWiFi:
+                    XTNetworkStatus = AFNetworkReachabilityStatusReachableViaWiFi;
+                    [[NSNotificationCenter defaultCenter]postNotificationName:NetWorkStatusChanged object:nil userInfo:@{@"status":@"2"}];
+                    break;
+                case AFNetworkReachabilityStatusReachableViaWWAN:
+                    XTNetworkStatus = AFNetworkReachabilityStatusReachableViaWWAN;
+                    [[NSNotificationCenter defaultCenter]postNotificationName:NetWorkStatusChanged object:nil userInfo:@{@"status":@"3"}];
+                    break;
+                default:
+                    break;
+            }
+        }];
+        [mgr startMonitoring];
+    
     });
     return _instance;
 }
@@ -35,6 +61,10 @@
 responseSeializerType:(NHResponseSeializerType)type
     success:(void (^)(id))success
     failure:(void (^)(NSError *))failure {
+    if (XTNetworkStatus==AFNetworkReachabilityStatusNotReachable) {
+        [MBProgressHUD showMessage:@"无网络" toView:[UIApplication sharedApplication].keyWindow];
+        return;
+    }
     AFHTTPSessionManager *manager = [AFHTTPSessionManager sharedManager];
 //    manager.requestSerializer.cachePolicy= NSURLRequestReturnCacheDataElseLoad;
     manager.requestSerializer.timeoutInterval=30.f;
@@ -46,7 +76,10 @@ responseSeializerType:(NHResponseSeializerType)type
         // 成功
         if (success) {
             if ([responseObject[@"code"]intValue]==1099) {
-                [[NSNotificationCenter defaultCenter]postNotificationName:OtherAddressLogin object:nil];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [[NSNotificationCenter defaultCenter]postNotificationName:OtherAddressLogin object:nil];
+                });
+                
             }
             success(responseObject);
 //            NSLog(@"原理种打印一下:%@",responseObject);
@@ -69,7 +102,10 @@ responseSeializerType:(NHResponseSeializerType)type
 responseSeializerType:(NHResponseSeializerType)type
      success:(void (^)(id))success
      failure:(void (^)(NSError *))failure {
-    
+    if (XTNetworkStatus==AFNetworkReachabilityStatusNotReachable) {
+        [MBProgressHUD showMessage:@"无网络" toView:[UIApplication sharedApplication].keyWindow];
+        return;
+    }
     AFHTTPSessionManager *manager = [AFHTTPSessionManager sharedManager];
     
 
@@ -88,7 +124,9 @@ responseSeializerType:(NHResponseSeializerType)type
     [manager POST:URLString parameters:parameters progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         if (success) {
             if ([responseObject[@"code"]intValue]==1099) {
-                [[NSNotificationCenter defaultCenter]postNotificationName:OtherAddressLogin object:nil];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [[NSNotificationCenter defaultCenter]postNotificationName:OtherAddressLogin object:nil];
+                });
             }
               success(responseObject);
         }
@@ -115,7 +153,10 @@ responseSeializerType:(NHResponseSeializerType)type
 constructingBodyWithBlock:(void (^)(id<AFMultipartFormData>))block
      success:(void (^)(id))success
      failure:(void (^)(NSError *))failure {
-    
+    if (XTNetworkStatus==AFNetworkReachabilityStatusNotReachable) {
+        [MBProgressHUD showMessage:@"无网络" toView:[UIApplication sharedApplication].keyWindow];
+        return;
+    }
     AFHTTPSessionManager *manager = [AFHTTPSessionManager sharedManager];
     
     
@@ -134,7 +175,9 @@ constructingBodyWithBlock:(void (^)(id<AFMultipartFormData>))block
         NSLog(@"%@", responseObject);
         if (success) {
             if ([responseObject[@"code"]intValue]==1099) {
-                [[NSNotificationCenter defaultCenter]postNotificationName:OtherAddressLogin object:nil];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [[NSNotificationCenter defaultCenter]postNotificationName:OtherAddressLogin object:nil];
+                });
             }
             success(responseObject);
         }

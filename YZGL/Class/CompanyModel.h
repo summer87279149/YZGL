@@ -16,9 +16,10 @@
 @property (nonatomic, strong) NSString *address;
 @property (nonatomic, strong) NSString *lng;
 @property (nonatomic, strong) NSString *lat;
-//@property (nonatomic, strong) NSString *comname;
 @property (nonatomic, strong) NSString *validDate;
 @property (nonatomic, strong) NSString *isLongTerm;
 @property (nonatomic, strong) UIImage *scanImage;
 @property (nonatomic, strong) UIImage *companyImage;
+//有空值？
+-(BOOL)isSomeValueIsNil;
 @end

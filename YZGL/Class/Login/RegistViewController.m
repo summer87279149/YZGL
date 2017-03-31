@@ -156,7 +156,7 @@
         [self popoverPresentationController];
     }];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        typeNum==0?[self.navigationController pushViewController:[[Login3ViewController alloc]init] animated:YES]:[self.navigationController pushViewController:[[Login2ViewController alloc]initSourceType:SourceTypeRegister] animated:YES];
+        typeNum==0?[self.navigationController pushViewController:[[Login3ViewController alloc]initSourceType:SourceTypeRegister] animated:YES]:[self.navigationController pushViewController:[[Login2ViewController alloc]initSourceType:SourceTypeRegister] animated:YES];
     }];
     [alertController addAction:cancelAction];
     [alertController addAction:okAction];

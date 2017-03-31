@@ -27,7 +27,7 @@
 @property (nonatomic, strong) RENumberItem *certificate;
 @property (nonatomic, strong) RETableViewItem *certifyAddress;
 @property (nonatomic, strong) RETableViewItem *address;
-
+@property (nonatomic, strong) RETextItem *companyName;
 @property (nonatomic, strong) ChooseDateItem *chooseDateItem;
 @end
 
@@ -50,12 +50,53 @@
     [self setupview];
     [self addPhotoUI];
 }
+//完成按钮点击
 -(void)completeBtnClicked{
+    if([self.companyModel isSomeValueIsNil]){
+        NSLog(@"有空值");
+        [MBProgressHUD showError:@"信息不全! "];
+        return;
+    }
+    //判断营业执照能不能用
+    [RequestManager judgeBusinesslLicenseIsUsed:self.sourceType license:self.certificate.value success:^(id response) {
+        if ([response[@"code"] intValue]==1) {
+            [self auth];
+        }else{
+            [MBProgressHUD showError:response[@"message"]];
+        }
+    } error:^(id response) {
+        
+    }];
+    
+}
+//上传前的认证
+-(void)auth{
+    [RequestManager companyFormAuth:self.sourceType license:self.certificate.value success:^(id response) {
+        if ([response[@"code"]intValue]==1) {
+            [self uploadForm];
+        }else{
+             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"认证失败" message:@"是否继续保存" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [self uploadForm];
+            }];
+            [alertController addAction:cancelAction];
+            [alertController addAction:okAction];
+            [self presentViewController:alertController animated:YES completion:nil];
+        }
+    } error:^(id response) {
+        
+    }];
+}
+//能用就上传表单
+-(void)uploadForm{
     NSDictionary *dic;
     if (self.sourceType == SourceTypeRegister) {
         dic = @{};
-    }else {
+    }else if(self.sourceType == SourceTypeDefault){
         dic = @{@"f":@"1"};
+    }else {
+        dic = @{@"f":@"1",@"comname":self.companyName.value};
     }
     NSDictionary* para  = @{@"type":@"2",@"uid":[UserModel userId],@"province":self.companyModel.provinceCode,@"city":self.companyModel.cityCode,@"area":self.companyModel.areaCode,@"address":self.companyModel.address,@"lng":self.companyModel.lng,@"lon":self.companyModel.lat,@"idcard":self.certificate.value,@"yxq":self.companyModel.validDate,@"longtime":self.companyModel.isLongTerm
                             };
@@ -64,7 +105,7 @@
     [finalParas addEntriesFromDictionary:dic];
     [finalParas addEntriesFromDictionary:para];
     [RequestManager companyAuthWithPara:finalParas scanImage:self.companyModel.scanImage companyImage:self.companyModel.companyImage success:^(id response) {
-        NSLog(@"上传返回结果事:%@",response);
+        NSLog(@"企业上传表单返回结果事:%@",response);
     } error:^(id response) {
         
     }];
@@ -90,6 +131,7 @@
     [completeBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [completeBtn addTarget: self action:@selector(completeBtnClicked) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:completeBtn];
+
 }
 
 -(MyLinearLayout*)createImageView:(NSInteger)tag title:(NSString*)title{
@@ -134,6 +176,7 @@
 }
 -(void)setupview{
     self.manager = [[RETableViewManager alloc] initWithTableView:self.tableview];
+    
     RETableViewSection *section = [RETableViewSection sectionWithHeaderTitle:@"Test"];
     section.headerHeight = 0;
     [self.manager addSection:section];
@@ -160,7 +203,10 @@
     self.manager[@"ChooseDateItem"] = @"ChooseDateCell";
     self.chooseDateItem = [ChooseDateItem itemWithImageNamed:@"das"];
     self.chooseDateItem.selectionStyle = UITableViewCellSelectionStyleNone;
-  
+    if (self.sourceType == SourceTypePersonalToEnterprise) {
+        self.companyName = [RETextItem itemWithTitle:@"单位名称:" value:nil];
+        [section addItem:self.companyName];
+    }
     [section addItem:self.certificate];
     [section addItem:self.certifyAddress];
     [section addItem:self.chooseDateItem];
@@ -188,6 +234,9 @@
     }else{
         self.certifyAddress.title =[NSString  stringWithFormat:@"公司注册地: %@ %@ %@",note.userInfo[@"province"],note.userInfo[@"city"],note.userInfo[@"area"]];
         self.storeCertifyAddress = [NSString stringWithFormat:@"%@%@%@",note.userInfo[@"province"],note.userInfo[@"city"],note.userInfo[@"area"]];
+        self.companyModel.provinceCode = note.userInfo[@"selectedProvinceCode"];
+        self.companyModel.cityCode = note.userInfo[@"selectedCityCode"];
+        self.companyModel.areaCode = note.userInfo[@"selectedAreaCode"];
         [self.certifyAddress reloadRowWithAnimation:UITableViewRowAnimationAutomatic];
     }
 }
@@ -199,7 +248,6 @@
         return;
     }
     MapViewController *vc = [[MapViewController alloc]initWithAddress:self.storeCertifyAddress];
-    
     vc.delegate = [RACSubject subject];
     [vc.delegate subscribeNext:^(NSDictionary *dic) {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -213,7 +261,6 @@
             [self.address reloadRowWithAnimation:UITableViewRowAnimationAutomatic];
 //             NSLog(@"选择的位置经纬度事1:%@==%@==%@==%@",lat,lon,dic[@"address"],dic[@"address2"]);
         });
-       
     }];
     vc.title=@"选择位置";
     [self.navigationController pushViewController:vc animated:YES];

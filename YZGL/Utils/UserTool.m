@@ -10,7 +10,12 @@
 #import "AppDelegate.h"
 #import <CommonCrypto/CommonDigest.h>
 @implementation UserTool
-
++ (BOOL) validateNickname:(NSString *)nickname
+{
+    NSString *nicknameRegex = @"^[\u4e00-\u9fa5]{2,6}$";
+    NSPredicate *passWordPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",nicknameRegex];
+    return [passWordPredicate evaluateWithObject:nickname];
+}
 + (BOOL) deptIdInputShouldAlphaNum:(NSString *)str
 {
     NSString *regex =@"[a-zA-Z0-9]*";
@@ -20,7 +25,15 @@
     }
     return YES;
 }
-
++ (BOOL) isIdentityCard:(NSString *)IDCardNumber
+{
+    if (IDCardNumber.length <= 0) {
+        return NO;
+    }
+    NSString *regex2 = @"^(\\d{14}|\\d{17})(\\d|[xX])$";
+    NSPredicate *identityCardPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",regex2];
+    return [identityCardPredicate evaluateWithObject:IDCardNumber];
+}
 + (BOOL)validateNumber:(NSString *) textString
 {
     NSString* number=@"^[0-9]+$";

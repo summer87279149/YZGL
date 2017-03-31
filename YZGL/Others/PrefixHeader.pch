@@ -101,4 +101,5 @@
 #import "UserModel.h"
 #import "SKFCamera.h"
 #import "CommonAPIConstant.h"
+#import "UserTool.h"
 #endif /* PrefixHeader_pch */

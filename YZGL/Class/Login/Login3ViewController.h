@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-
 @interface Login3ViewController : UIViewController
-
+- (instancetype)initSourceType:(SourceType)type;
 @end

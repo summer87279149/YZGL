@@ -45,9 +45,9 @@
 @property (nonatomic, copy) NSString *idcard;
 //pass
 @property (nonatomic, copy) NSString *pass;
-//post
+//post 职位
 @property (nonatomic, copy) NSString *post;
-//role
+//role 角色
 @property (nonatomic, copy) NSString *role;
 
 //tel

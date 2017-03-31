@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="79" id="KGk-i7-Jjw" customClass="PersonalAlreadyAuthCell">
+            <rect key="frame" x="0.0" y="0.0" width="373" height="79"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="373" height="79"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FVd-ZM-jus">
+                        <rect key="frame" x="265" y="48.5" width="98" height="20"/>
+                        <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="Nr5-qf-sG6"/>
+                            <constraint firstAttribute="width" constant="98" id="hlC-T1-KJ1"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <state key="normal" title="升级为企业用户">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="upgrade:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Yfd-2d-c3b"/>
+                        </connections>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="真实姓名:XXXXXX" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JiD-lM-Led">
+                        <rect key="frame" x="10" y="10.5" width="255" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="VVz-K7-JIE"/>
+                            <constraint firstAttribute="height" constant="21" id="gKE-0n-gMr"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="身份证号码号码:325812559648124577" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r6e-rL-D3F">
+                        <rect key="frame" x="10" y="48.5" width="255" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="AXp-KR-hMJ"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IWT-MV-cHg">
+                        <rect key="frame" x="265" y="11" width="98" height="20"/>
+                        <color key="backgroundColor" red="0.0" green="1" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="98" id="7SZ-LA-lfl"/>
+                            <constraint firstAttribute="height" constant="20" id="Bvi-NV-A25"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <state key="normal" title="个人实名认证">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="upgrade:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="tx0-y9-RaC"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="FVd-ZM-jus" secondAttribute="trailing" constant="10" id="2nH-6C-jdZ"/>
+                    <constraint firstItem="JiD-lM-Led" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Tcb-F1-MVi"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="IWT-MV-cHg" secondAttribute="trailing" constant="2" id="WtL-an-4kL"/>
+                    <constraint firstItem="r6e-rL-D3F" firstAttribute="width" secondItem="JiD-lM-Led" secondAttribute="width" id="XAq-Sl-Qw7"/>
+                    <constraint firstItem="r6e-rL-D3F" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Ynk-96-o31"/>
+                    <constraint firstItem="IWT-MV-cHg" firstAttribute="centerY" secondItem="JiD-lM-Led" secondAttribute="centerY" id="avm-PI-PVL"/>
+                    <constraint firstAttribute="bottom" secondItem="r6e-rL-D3F" secondAttribute="bottom" constant="10" id="dOI-UV-3d7"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="JiD-lM-Led" secondAttribute="trailing" constant="100" id="ibl-eH-Fz1"/>
+                    <constraint firstItem="FVd-ZM-jus" firstAttribute="centerY" secondItem="r6e-rL-D3F" secondAttribute="centerY" id="vFI-rW-oXJ"/>
+                    <constraint firstItem="JiD-lM-Led" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="xoj-of-p9P"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="name" destination="JiD-lM-Led" id="zsk-uL-abr"/>
+                <outlet property="number" destination="r6e-rL-D3F" id="fd3-Jx-nyO"/>
+                <outlet property="personalAuthBtn" destination="IWT-MV-cHg" id="kZH-Tg-w2t"/>
+                <outlet property="upgradeBtn" destination="FVd-ZM-jus" id="tWU-70-5QI"/>
+            </connections>
+            <point key="canvasLocation" x="-1.5" y="56.5"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -51,9 +51,9 @@
     NSNumber *typeNum = [NSNumber numberWithInteger:type+1];
     NSDictionary *para;
     if ([typeNum  isEqual: @2]) {
-        para = @{@"type":typeNum,@"username":userName,@"password":psw,@"tel":tel,@"yzm":code,@"comname":comname};
+        para = @{@"type":typeNum,@"username":[userName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],@"password":psw,@"tel":tel,@"yzm":code,@"comname":[comname stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]};
     }else{
-        para = @{@"type":typeNum,@"username":userName,@"password":psw,@"tel":tel,@"yzm":code};
+        para = @{@"type":typeNum,@"username":[userName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],@"password":psw,@"tel":tel,@"yzm":code};
     }
     [XTRequestManager POST:XT_REQUEST_URL(@"saveRegInfo") parameters:para responseSeializerType:NHResponseSeializerTypeDefault success:^(id responseObject){
         xt_success(responseObject);
@@ -74,8 +74,47 @@
         xt_error(error);
     }];
 }
++(void)judgeBusinesslLicenseIsUsed:(SourceType)type license:(NSString *)value success:(Success)xt_success error:(Error)xt_error{
+    NSDictionary *para;
+    if(type == SourceTypeRegister){
+        para = @{@"uid":[UserModel userId],@"idcard":value};
+    }else{
+        para = @{@"token":[UserModel userToken],@"idcard":value};
+    }
+    [XTRequestManager GET:XT_REQUEST_URL(@"checkYyzz") parameters:para responseSeializerType:NHResponseSeializerTypeDefault success:^(id responseObject) {
+        xt_success(responseObject);
+    } failure:^(NSError *error) {
+        xt_error(error);
+    }];
+
+}
++(void)companyFormAuth:(SourceType)type license:(NSString *)value success:(Success)xt_success error:(Error)xt_error{
+    NSDictionary *para;
+    if(type == SourceTypeRegister){
+        para = @{@"uid":[UserModel userId],@"idcard":value};
+    }else{
+        para = @{@"token":[UserModel userToken],@"idcard":value};
+    }
+    [XTRequestManager GET:XT_REQUEST_URL(@"qyrz") parameters:para responseSeializerType:NHResponseSeializerTypeDefault success:^(id responseObject) {
+        xt_success(responseObject);
+    } failure:^(NSError *error) {
+        xt_error(error);
+    }];
+}
++(void)personalFormAuth:(SourceType)type name:(NSString*)name idcard:(NSString *)value success:(Success)xt_success error:(Error)xt_error{
+    NSDictionary *para;
+    if(type == SourceTypeRegister){
+        para = @{@"uid":[UserModel userId],@"idcard":value,@"name":name};
+    }else{
+        para = @{@"token":[UserModel userToken],@"idcard":value,@"name":name};
+    }
+    [XTRequestManager GET:XT_REQUEST_URL(@"grrz") parameters:para responseSeializerType:NHResponseSeializerTypeDefault success:^(id responseObject) {
+        xt_success(responseObject);
+    } failure:^(NSError *error) {
+        xt_error(error);
+    }];
+}
 +(void)companyAuthWithPara:(NSDictionary*)para scanImage:(UIImage *)image1 companyImage:(UIImage *)image2 success:(Success)xt_success error:(Error)xt_error{
-    
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     // 设置时间格式
@@ -95,28 +134,29 @@
     } failure:^(NSError *error) {
         xt_error(error);
     }];
-    
-    
-    
-    
-    
-    
-    
-    
 }
-+(void)personalAuthWithPara:(NSDictionary *)para success:(Success)xt_success error:(Error)xt_error{
-    [XTRequestManager POST:XT_REQUEST_URL(@"uploadRegInfo") parameters:para responseSeializerType:NHResponseSeializerTypeDefault success:^(id responseObject) {
+//判断身份证是否被使用
++(void)judgeIDCardIsUsed:(SourceType)type license:(NSString *)value success:(Success)xt_success error:(Error)xt_error{
+    NSDictionary *para;
+    if(type == SourceTypeRegister){
+        para = @{@"uid":[UserModel userId],@"idcard":value};
+    }else{
+        para = @{@"token":[UserModel userToken],@"idcard":value};
+    }
+    [XTRequestManager GET:XT_REQUEST_URL(@"checkIdcard") parameters:para responseSeializerType:NHResponseSeializerTypeDefault success:^(id responseObject) {
         xt_success(responseObject);
     } failure:^(NSError *error) {
         xt_error(error);
     }];
     
-    
-    
-    
-    
-    
-    
+}
+//上传个人信息
++(void)personalAuthWithPara:(NSDictionary*)para frontImg:(UIImage*)img1 backImg:(UIImage *)img2 holdImg:(UIImage*)img3 success:(Success)xt_success error:(Error)xt_error{
+    [XTRequestManager POST:XT_REQUEST_URL(@"uploadRegInfo") parameters:para responseSeializerType:NHResponseSeializerTypeDefault success:^(id responseObject) {
+        xt_success(responseObject);
+    } failure:^(NSError *error) {
+        xt_error(error);
+    }];   
 }
 +(void)queryUserInfoSuccess:(Success)xt_success error:(Error)xt_error{
     [XTRequestManager GET:XT_REQUEST_URL(@"/user/getOprInfo") parameters:@{@"token":[UserModel userToken]} responseSeializerType:NHResponseSeializerTypeDefault success:^(id responseObject) {

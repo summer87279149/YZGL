@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="339" height="76"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="339" height="76"/>
+                <rect key="frame" x="0.0" y="0.0" width="339" height="75"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="企业名称:扬州两地昂网络" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R0f-l5-dPd">
@@ -29,13 +29,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="营业执照号码:325812559648124577" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6bC-Qi-jHE">
-                        <rect key="frame" x="10" y="41" width="239" height="25"/>
+                        <rect key="frame" x="10" y="41" width="239" height="24"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t8w-Nb-rVK">
-                        <rect key="frame" x="251" y="10.5" width="85" height="20"/>
+                        <rect key="frame" x="251" y="11" width="85" height="20"/>
                         <color key="backgroundColor" red="0.0" green="1" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="Vj8-n8-yoj"/>
@@ -50,7 +50,7 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ocu-jy-Plo">
-                        <rect key="frame" x="251" y="43.5" width="85" height="20"/>
+                        <rect key="frame" x="251" y="43" width="85" height="20"/>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="KRw-vg-veN"/>
@@ -85,7 +85,7 @@
                 <outlet property="rightBottom" destination="ocu-jy-Plo" id="YWi-hf-e1d"/>
                 <outlet property="rightTop" destination="t8w-Nb-rVK" id="u5p-Mu-GQC"/>
             </connections>
-            <point key="canvasLocation" x="34.5" y="68"/>
+            <point key="canvasLocation" x="12" y="71"/>
         </tableViewCell>
     </objects>
 </document>

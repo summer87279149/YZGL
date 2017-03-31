@@ -9,6 +9,7 @@
 #import "CommonAPIConstant.h"
 
 @implementation CommonAPIConstant
+NSString *const NetWorkStatusChanged = @"NetWorkStatusChanged";
 NSString *const DidLoginNotification = @"DidLoginNotification";
 NSString *const UserInfoChangedNotification = @"UserInfoChangedNotification";
 NSString *const OtherAddressLogin = @"OtherAddressLogin";
