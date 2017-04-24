@@ -6,7 +6,6 @@
 //  Copyright © 2017年 Admin. All rights reserved.
 //
 #import "BaseNavViewController.h"
-#import "SDCycleScrollView.h"
 #import "RequestManager.h"
 #import "Login2ViewController.h"
 #import "BeforeScanSingleton.h"
@@ -21,8 +20,7 @@
 #import "HomeViewController.h"
 #import "SearchView.h"
 
-@interface HomeViewController ()<UINavigationControllerDelegate,UITableViewDelegate,UITableViewDataSource,SDCycleScrollViewDelegate>{
-    SDCycleScrollView *topScrollView;
+@interface HomeViewController ()<UINavigationControllerDelegate,UITableViewDelegate,UITableViewDataSource>{
     MyLinearLayout *topLinearLayout;
     UILabel *phoneLab;
     UIImageView *imgView;
@@ -276,8 +274,6 @@
     self.tableview.dataSource = self;
     self.tableview.tableFooterView = [UIView new];
     [rootLayout addSubview:self.tableview];
-    
-
 }
 -(UILabel *)managerOrStuff:(NSString *)type{
     UILabel *lal = [[UILabel alloc]init];

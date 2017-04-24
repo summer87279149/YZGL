@@ -10,6 +10,7 @@
 #import "ForgetPasswordViewController.h"
 
 @interface ForgetPasswordViewController ()
+
 @property (nonatomic, strong) UITableView *tableview;
 
 @property (nonatomic, strong) RETableViewManager *manager;
@@ -20,6 +21,7 @@
 
 @property (nonatomic, strong) UIButton *completeBtn;
 @property (nonatomic, strong) UIButton *vertifyBtn;
+
 @end
 
 @implementation ForgetPasswordViewController
@@ -27,9 +29,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title  = @"忘记密码";
-     [self setupview];
+    [self setupview];
 }
+
 -(void)setupview{
+    
     self.manager = [[RETableViewManager alloc] initWithTableView:self.tableview];
     RETableViewSection *section = [RETableViewSection sectionWithHeaderTitle:@"Test"];
     section.headerHeight = 0;
@@ -48,12 +52,13 @@
     [section addItem:self.vertifyCode];
     [section addItem:self.password];
     [section addItem:self.passwordVerify];
-    
     [self.view addSubview:self.completeBtn];
+    
     self.completeBtn.frame = CGRectMake(20, CGRectGetMaxY(self.tableview.frame), kScreenWidth-40, 40);
     self.completeBtn.layer.cornerRadius = 3;
-    
 }
+
+
 -(void)completeClicked{
     if (![self.passwordVerify.value isEqualToString:self.password.value]) {
         [MBProgressHUD showError:@"两次密码不一致"];
@@ -72,6 +77,8 @@
     }];
 }
 
+
+
 -(UIButton*)createBtnWithTag:(NSInteger)tag{
     UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 50, 30)];
     [btn setTitle:@"验证码" forState:UIControlStateNormal];
@@ -86,12 +93,6 @@
     btn.showsTouchWhenHighlighted = YES;
     return btn;
 }
-
-
-
-
-
-
 
 -(void)codeCountDownTimerWith:(UIButton*)sender{
     __block int timeout=60; //倒计时时间

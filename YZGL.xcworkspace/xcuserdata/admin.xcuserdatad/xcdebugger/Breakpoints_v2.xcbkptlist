@@ -84,11 +84,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YZGL/Class/Home/HomeViewController.m"
-            timestampString = "512555730.002543"
+            timestampString = "513229975.833205"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "156"
-            endingLineNumber = "156"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -105,7 +105,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "147"
             endingLineNumber = "147"
-            landmarkName = "+queryUserInfoSuccess:error:"
+            landmarkName = "+judgeIDCardIsUsed:license:success:error:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -132,11 +132,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YZGL/Class/Home/HomeViewController.m"
-            timestampString = "512555730.002543"
+            timestampString = "513229975.833205"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "306"
-            endingLineNumber = "306"
+            startingLineNumber = "304"
+            endingLineNumber = "304"
             landmarkName = "-pushPersonalData"
             landmarkType = "7">
          </BreakpointContent>
