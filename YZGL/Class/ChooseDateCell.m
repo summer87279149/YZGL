@@ -16,6 +16,7 @@
 }
 - (void)cellDidLoad
 {
+    
     [super cellDidLoad];
     self.isLongTerm = NO;
     self.lab = [[UILabel alloc]initWithFrame:CGRectMake(15, 7, 50, 30)];
